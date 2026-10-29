@@ -1,0 +1,79 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import Icon, { type IconName } from '../../components/Icon.astro';
+import { SITE } from '../../config/site';
+
+const path = '/sobre/';
+
+const pilares: { icone: IconName; t: string; d: string }[] = [
+  { icone: 'raio', t: 'Missão', d: 'Dar a qualquer negócio, de qualquer tamanho, um atendimento no WhatsApp rápido e atencioso como o das melhores empresas.' },
+  { icone: 'lupa', t: 'Visão', d: 'Ser a referência em agentes de IA confiáveis para atendimento pelo WhatsApp no Brasil.' },
+  { icone: 'conversa', t: 'Propósito', d: 'Nenhuma mensagem de cliente sem uma boa resposta, seja qual for o horário, o dia ou o volume.' },
+];
+
+const principios = [
+  { t: 'Resultado primeiro', d: 'Não entregamos tecnologia pela tecnologia. Entregamos conversas que viram vendas, agendamentos e clientes que voltam.' },
+  { t: 'Transparência', d: 'Você sabe o que o Axon faz, como funciona e quanto custa. Sem letras miúdas e sem cobrança surpresa.' },
+  { t: 'Feito para o seu negócio', d: 'Cada agente é construído a partir das regras, do tom e das informações da sua empresa, não de um modelo genérico.' },
+  { t: 'Parceria contínua', d: 'O trabalho não termina na entrega. Acompanhamos, ajustamos e evoluímos o agente junto com o seu negócio.' },
+];
+
+const about = {
+  '@type': 'AboutPage',
+  name: 'Sobre o Axon',
+  url: new URL(path, SITE.url).href,
+  about: { '@id': `${SITE.url}/#organization` },
+};
+---
+<ArticleShell
+  seoTitle="Sobre | Axon — Agente de IA para WhatsApp da JH Online Solutions"
+  description="Conheça o Axon e a JH Online Solutions: quem somos, por que criamos um agente de IA para WhatsApp e como trabalhamos com cada cliente."
+  path={path}
+  eyebrow="Quem somos"
+  title="Atendimento rápido, com cara de gente."
+  lead="O Axon é um produto da JH Online Solutions. Nasceu da frustração com chatbots que travam, perdem clientes e fazem boas empresas parecerem amadoras."
+  breadcrumbs={[{ name: 'Sobre', path }]}
+  jsonLd={[about]}
+  ctaOrigem="sobre-final"
+  wide
+>
+  <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+    <div class="prosa">
+      <h2 class="!mt-0">Por que o Axon existe</h2>
+      <p>Vimos muitos negócios investirem em anúncios, em produto de qualidade e em uma operação bem cuidada, mas perderem clientes no último passo: a resposta no WhatsApp. Mensagem que chega à noite e só é vista de manhã. Fila no horário de pico. A mesma pergunta respondida dezenas de vezes.</p>
+      <p>Os chatbots de menu não resolviam. Funcionam enquanto o cliente segue o roteiro; na primeira pergunta diferente, travam.</p>
+      <p>Por isso criamos o Axon com outra premissa: o cliente deve sentir que foi bem atendido, como se falasse com alguém da equipe, a qualquer hora.</p>
+    </div>
+    <div class="cartao self-start p-7" data-reveal>
+      <p class="text-sm font-semibold text-roxo">A empresa</p>
+      <p class="mt-2 text-xl font-semibold">{SITE.company.legalName}</p>
+      <dl class="mt-5 grid gap-3 text-sm text-texto">
+        <div><dt class="font-medium text-tinta">CNPJ</dt><dd>{SITE.company.cnpj}</dd></div>
+        <div><dt class="font-medium text-tinta">Endereço</dt><dd>{SITE.company.street}, {SITE.company.city} – {SITE.company.region}</dd></div>
+        <div><dt class="font-medium text-tinta">Site</dt><dd><a href={SITE.company.url} class="text-roxo underline" target="_blank" rel="noopener">jhonlinesolutions.com.br</a></dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <ul class="mt-20 grid gap-4 md:grid-cols-3">
+    {pilares.map((p, i) => (
+      <li class="cartao p-7" data-reveal={i * 100}>
+        <span class="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-roxo to-ciano text-white"><Icon name={p.icone} /></span>
+        <h2 class="mt-5 text-lg font-semibold">{p.t}</h2>
+        <p class="mt-2 leading-relaxed text-texto">{p.d}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="titulo mt-24 text-4xl sm:text-5xl" data-reveal>Como trabalhamos</h2>
+  <ol class="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+    {principios.map((p, i) => (
+      <li class="flex gap-5" data-reveal={(i % 2) * 100}>
+        <span class="titulo text-4xl text-roxo/40">0{i + 1}</span>
+        <div><h3 class="font-semibold">{p.t}</h3><p class="mt-1 leading-relaxed text-texto">{p.d}</p></div>
+      </li>
+    ))}
+  </ol>
+  <div class="mt-12"><CtaWhatsApp origem="sobre" label="Conversar com o Axon" /></div>
+</ArticleShell>

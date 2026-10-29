@@ -1,0 +1,18 @@
+---
+// Fora do menu e do sitemap por decisão do Jomar (pode voltar). Links Stripe guardados em docs/stripe-links.md.
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+
+const path = '/assinatura/';
+---
+<ArticleShell
+  seoTitle="Assinatura | Axon"
+  description="Os planos do Axon são definidos em uma proposta sob medida. Fale com a gente pelo WhatsApp para receber a sua."
+  path={path}
+  title="Assinatura sob medida"
+  lead="Os planos do Axon são montados para cada negócio, a partir de um diagnóstico gratuito. Fale com a gente para receber a sua proposta ou o link de pagamento combinado."
+  breadcrumbs={[{ name: 'Assinatura', path }]}
+  noindex
+>
+  <div class="pb-10"><CtaWhatsApp origem="assinatura" label="Falar sobre minha assinatura" mensagem="Olá! Vim pela página de assinatura do Axon e quero falar sobre o meu plano." /></div>
+</ArticleShell>

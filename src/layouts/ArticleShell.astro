@@ -1,0 +1,60 @@
+---
+import Base from './Base.astro';
+import FinalCta from '../components/FinalCta.astro';
+import type { Breadcrumb } from '../components/Seo.astro';
+
+interface Props {
+  seoTitle: string;
+  description: string;
+  path: string;
+  title: string;
+  lead?: string;
+  eyebrow?: string;
+  updated?: string; // ISO yyyy-mm-dd
+  answer?: string;
+  breadcrumbs: Breadcrumb[];
+  jsonLd?: object[];
+  ogImage?: string;
+  noindex?: boolean;
+  ctaOrigem?: string;
+  wide?: boolean;
+}
+
+const { seoTitle, description, path, title, lead, eyebrow, updated, answer, breadcrumbs, jsonLd, ogImage, noindex, ctaOrigem, wide = false } = Astro.props;
+const dataFmt = updated && new Date(`${updated}T12:00:00-03:00`).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={seoTitle} description={description} path={path} breadcrumbs={breadcrumbs} jsonLd={jsonLd} ogImage={ogImage} noindex={noindex}>
+  <section class="relative overflow-hidden">
+    <div class="orbe -top-32 -right-24 size-96 bg-[#d9ccff]" aria-hidden="true"></div>
+    <div class="orbe top-24 -left-32 size-72 bg-ciano-50" aria-hidden="true"></div>
+    <div class:list={['container-x relative pt-10 pb-12 md:pt-16', wide ? '' : 'max-w-4xl']}>
+      <nav aria-label="Você está em" class="text-sm text-suave">
+        <ol class="flex flex-wrap items-center gap-1.5">
+          <li><a href="/" class="hover:text-roxo">Início</a></li>
+          {breadcrumbs.map((b, i) => (
+            <li class="flex items-center gap-1.5">
+              <span aria-hidden="true">/</span>
+              {i === breadcrumbs.length - 1 ? <span aria-current="page" class="text-texto">{b.name}</span> : <a href={b.path} class="hover:text-roxo">{b.name}</a>}
+            </li>
+          ))}
+        </ol>
+      </nav>
+      {eyebrow && <p class="mt-8 text-sm font-semibold tracking-wide text-roxo uppercase">{eyebrow}</p>}
+      <h1 class:list={['titulo text-[2.5rem] sm:text-6xl', eyebrow ? 'mt-3' : 'mt-8']}>{title}</h1>
+      {lead && <p class="mt-5 max-w-2xl text-lg leading-relaxed text-texto">{lead}</p>}
+      {dataFmt && <p class="mt-4 text-sm text-suave">Atualizado em <time datetime={updated}>{dataFmt}</time> · Equipe Axon</p>}
+      {answer && (
+        <div data-answer class="cartao mt-8 border-l-4 border-l-roxo p-6">
+          <p class="text-sm font-semibold text-roxo">Resposta direta</p>
+          <p class="mt-2 text-lg leading-relaxed text-tinta" set:html={answer} />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <div class:list={['container-x', wide ? '' : 'max-w-4xl']}>
+    <slot />
+  </div>
+
+  {ctaOrigem && <FinalCta origem={ctaOrigem} />}
+</Base>

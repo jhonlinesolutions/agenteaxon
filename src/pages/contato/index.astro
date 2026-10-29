@@ -1,0 +1,65 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import Faq from '../../components/Faq.astro';
+import IconWhatsApp from '../../components/IconWhatsApp.astro';
+import { SITE } from '../../config/site';
+import { waLink } from '../../lib/whatsapp';
+
+const path = '/contato/';
+
+const faq = [
+  { q: 'Em quanto tempo o Axon entra no ar?', a: 'Em até 48 horas depois que recebemos as informações do seu negócio. Não há aplicativo para instalar nem projeto de TI.' },
+  { q: 'Preciso de conhecimento técnico?', a: 'Não. Nossa equipe configura tudo; você só nos passa as informações do negócio.' },
+  { q: 'Funciona no meu segmento?', a: 'Se você atende clientes pelo WhatsApp, o Axon pode ser treinado para o seu negócio: clínicas, imobiliárias, estética, delivery, advocacia, lojas e muitos outros.' },
+  { q: 'Tem contrato mínimo?', a: 'Não há fidelidade. O plano é mensal e pode ser cancelado com aviso prévio de 30 dias.' },
+];
+
+const contact = {
+  '@type': 'ContactPage',
+  name: 'Contato — Axon',
+  url: new URL(path, SITE.url).href,
+  about: { '@id': `${SITE.url}/#organization` },
+};
+---
+<ArticleShell
+  seoTitle="Contato | Axon — Fale com a gente pelo WhatsApp"
+  description="Fale com o Axon pelo WhatsApp (11) 96376-5638 ou por e-mail. Peça seu diagnóstico gratuito e receba uma proposta sob medida para o seu negócio."
+  path={path}
+  eyebrow="Fale com a gente"
+  title="Vamos colocar o Axon no seu negócio?"
+  lead="O jeito mais rápido é pelo WhatsApp. Quem te atende primeiro é o próprio Axon, e você já sente na prática como ele trabalha."
+  breadcrumbs={[{ name: 'Contato', path }]}
+  jsonLd={[contact]}
+  wide
+>
+  <div class="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
+    <a href={waLink('contato-cartao')} target="_blank" rel="noopener" data-wa-origem="contato-cartao" class="group relative overflow-hidden rounded-[2rem] bg-tinta p-8 text-white sm:p-10" data-reveal>
+      <div class="orbe -top-20 -right-20 size-80 bg-roxo opacity-60" aria-hidden="true"></div>
+      <div class="relative">
+        <span class="grid size-14 place-items-center rounded-2xl bg-[#25d366]"><IconWhatsApp class="size-8" /></span>
+        <p class="mt-8 text-sm text-white/70">WhatsApp, 24 horas</p>
+        <p class="titulo mt-1 text-5xl">{SITE.whatsappDisplay}</p>
+        <p class="mt-4 max-w-md leading-relaxed text-white/75">Conte rapidamente sobre o seu negócio e o seu atendimento hoje. Retornamos com o diagnóstico e uma proposta sob medida.</p>
+        <span class="mt-8 inline-flex items-center gap-2 font-semibold text-ciano transition-transform group-hover:translate-x-1">Abrir conversa →</span>
+      </div>
+    </a>
+    <div class="grid gap-4">
+      <div class="cartao p-6" data-reveal="100">
+        <p class="text-sm font-semibold text-roxo">E-mail</p>
+        <a href={`mailto:${SITE.email}`} class="mt-1 block font-semibold break-all hover:text-roxo">{SITE.email}</a>
+      </div>
+      <div class="cartao p-6" data-reveal="180">
+        <p class="text-sm font-semibold text-roxo">Equipe comercial</p>
+        <p class="mt-1 text-texto">Segunda a sexta, das 9h às 18h. O Axon atende 24 horas.</p>
+      </div>
+      <div class="cartao p-6" data-reveal="260">
+        <p class="text-sm font-semibold text-roxo">Empresa</p>
+        <p class="mt-1 text-texto">{SITE.company.legalName}<br />CNPJ {SITE.company.cnpj}<br />{SITE.company.street}, {SITE.company.city} – {SITE.company.region}, CEP {SITE.company.postalCode}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-24 max-w-4xl"><Faq items={faq} title="Antes de chamar" /></div>
+  <div class="mt-10"><CtaWhatsApp origem="contato" /></div>
+</ArticleShell>

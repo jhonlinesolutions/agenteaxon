@@ -1,0 +1,80 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import { SITE } from '../../config/site';
+
+const path = '/termos/';
+const c = SITE.company;
+---
+<ArticleShell
+  seoTitle="Termos de Uso | Axon"
+  description="Condições gerais para uso do site agenteaxon.com.br e para contratação dos serviços do Axon, agente de IA para WhatsApp da JH Online Solutions."
+  path={path}
+  title="Termos de Uso"
+  lead="Ao acessar o site ou utilizar os serviços do Axon, você concorda com estes Termos."
+  updated="2026-10-29"
+  breadcrumbs={[{ name: 'Termos', path }]}
+>
+  <div class="prosa pb-10">
+    <h2>1. Sobre o serviço</h2>
+    <p>O <strong>Axon</strong> é um serviço de atendimento automatizado pelo WhatsApp baseado em inteligência artificial, desenvolvido e comercializado pela <strong>{c.legalName}</strong> (CNPJ {c.cnpj}), com sede em {c.city} – {c.region}. Estes Termos regulam o acesso ao site agenteaxon.com.br e a contratação do Axon.</p>
+
+    <h2>2. Aceitação</h2>
+    <p>Ao acessar o site, contratar ou utilizar o Axon, você declara que leu, entendeu e concorda com estes Termos. Se não concordar, não utilize o serviço.</p>
+
+    <h2>3. O que o serviço inclui</h2>
+    <ul>
+      <li>implantação de agente de inteligência artificial personalizado para atendimento pelo WhatsApp;</li>
+      <li>configuração de identidade, tom de voz, regras e base de conhecimento da empresa contratante;</li>
+      <li>integração com o número de WhatsApp do contratante;</li>
+      <li>suporte técnico contínuo e ajustes de comportamento do agente;</li>
+      <li>hospedagem da infraestrutura necessária à operação.</li>
+    </ul>
+
+    <h2>4. Contratação e pagamento</h2>
+    <h3>4.1 Proposta</h3>
+    <p>O escopo, a implantação e a mensalidade são definidos em proposta comercial, conforme o segmento, o volume de atendimentos e as funcionalidades contratadas.</p>
+    <h3>4.2 Período de teste</h3>
+    <p>Quando previsto na proposta, o contratante pode testar o Axon por 15 dias. Se optar por não continuar dentro desse prazo, o serviço é desligado sem cobrança de mensalidade.</p>
+    <h3>4.3 Cancelamento</h3>
+    <p>O contrato pode ser cancelado a qualquer momento, sem multa, com aviso prévio de <strong>30 dias</strong> para <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Valores já pagos não são reembolsados, exceto em caso de falha comprovada do serviço.</p>
+
+    <h2>5. Obrigações do contratante</h2>
+    <ul>
+      <li>fornecer informações verdadeiras e atualizadas sobre o negócio para configuração do agente;</li>
+      <li>usar o serviço conforme as leis brasileiras e os termos do WhatsApp;</li>
+      <li>não usar o Axon para spam ou conteúdo ilegal, enganoso ou abusivo;</li>
+      <li>não tentar acessar, modificar ou interferir na infraestrutura do serviço;</li>
+      <li>manter em sigilo eventuais dados de acesso e comunicar qualquer uso não autorizado.</li>
+    </ul>
+
+    <h2>6. Obrigações da JH Online Solutions</h2>
+    <ul>
+      <li>realizar a implantação em até 48 horas após o recebimento completo das informações;</li>
+      <li>manter disponibilidade mínima de 99% ao mês, exceto manutenções programadas;</li>
+      <li>avisar manutenções programadas com pelo menos 24 horas de antecedência;</li>
+      <li>responder solicitações de suporte em até 4 horas úteis;</li>
+      <li>manter a confidencialidade das informações do contratante e não compartilhá-las sem autorização.</li>
+    </ul>
+
+    <h2>7. Limitação de responsabilidade</h2>
+    <p>A JH Online Solutions não se responsabiliza por: bloqueio de números de WhatsApp por uso em desacordo com os termos da Meta/WhatsApp; respostas incorretas do agente decorrentes de informações incorretas ou desatualizadas fornecidas pelo contratante; indisponibilidade de serviços de terceiros (WhatsApp, provedores de mensagens ou de inteligência artificial); e danos indiretos, lucros cessantes ou perda de oportunidade. A responsabilidade máxima fica limitada ao valor pago pelo contratante nos últimos 3 meses.</p>
+
+    <h2>8. Propriedade intelectual</h2>
+    <p>Textos, imagens, marcas, design e código do site são de propriedade da {c.legalName}. É proibida a reprodução sem autorização prévia por escrito. O contratante mantém a propriedade das informações fornecidas para configuração do agente.</p>
+
+    <h2>9. Uso do WhatsApp</h2>
+    <p>O Axon opera integrado ao WhatsApp. O contratante é responsável por manter seu uso em conformidade com os Termos de Serviço do WhatsApp Business. A JH Online Solutions não se responsabiliza por bloqueios ou suspensões de contas.</p>
+
+    <h2>10. Privacidade</h2>
+    <p>O tratamento de dados pessoais segue a nossa <a href="/privacidade/">Política de Privacidade</a>, que faz parte destes Termos.</p>
+
+    <h2>11. Alterações</h2>
+    <p>Estes Termos podem ser atualizados. Mudanças relevantes serão comunicadas aos contratantes por e-mail com pelo menos 15 dias de antecedência; o uso continuado do serviço depois disso significa concordância.</p>
+
+    <h2>12. Lei aplicável e foro</h2>
+    <p>Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro da Comarca de São Paulo – SP para resolver controvérsias, com renúncia a qualquer outro.</p>
+
+    <h2>13. Contato</h2>
+    <p>E-mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> · WhatsApp: {SITE.whatsappDisplay}</p>
+  </div>
+</ArticleShell>

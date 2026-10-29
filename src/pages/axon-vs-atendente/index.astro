@@ -1,0 +1,85 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import Comparison from '../../components/Comparison.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import { SITE } from '../../config/site';
+
+const path = '/axon-vs-atendente/';
+const updated = '2026-10-29';
+
+const custos = [
+  ['Salário base (exemplo)', 'R$ 2.000'],
+  ['FGTS (8%)', 'R$ 160'],
+  ['INSS patronal (20%)', 'R$ 400'],
+  ['13º salário (1/12)', 'R$ 167'],
+  ['Férias + 1/3 (1/12)', 'R$ 222'],
+  ['Vale-refeição', 'R$ 400'],
+  ['Vale-transporte', 'R$ 220'],
+  ['Equipamento, sistemas e treinamento', 'R$ 250'],
+];
+
+const article = {
+  '@type': 'Article',
+  headline: 'Axon vs. contratar um atendente: comparação completa',
+  datePublished: '2025-05-29',
+  dateModified: updated,
+  author: { '@type': 'Organization', name: 'Equipe Axon', url: SITE.url },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: new URL(path, SITE.url).href,
+};
+---
+<ArticleShell
+  seoTitle="Axon vs. Contratar Atendente: Comparação Completa | Axon"
+  description="Contratar um atendente ou usar um agente de IA no WhatsApp? Compare custo real, disponibilidade e quando cada opção faz sentido para o seu negócio."
+  path={path}
+  eyebrow="Comparativo"
+  title="Axon vs. contratar um atendente"
+  lead="Não é uma disputa entre pessoas e tecnologia. É saber quem deve cuidar de cada parte do atendimento para o seu negócio vender mais."
+  updated={updated}
+  answer={`Para negócios que recebem muitas mensagens repetidas ou fora do horário comercial, um agente de IA como o Axon (a partir de R$ ${SITE.priceFrom}/mês) custa menos que um atendente contratado e atende 24 horas. O melhor resultado costuma vir da combinação: o Axon responde na hora e resolve o rotineiro, e a sua equipe fica com os casos que exigem decisão humana.`}
+  breadcrumbs={[{ name: 'Axon vs. Atendente', path }]}
+  jsonLd={[article]}
+  ctaOrigem="axon-vs-atendente-final"
+>
+  <div class="prosa">
+    <h2>O custo real de um atendente</h2>
+    <p>O salário é só uma parte. Somando os encargos obrigatórios e os benefícios mais comuns, o custo mensal fica bem acima do valor da carteira. Veja uma simulação com salário de R$ 2.000:</p>
+  </div>
+  <div class="cartao mt-8 overflow-hidden">
+    <table class="w-full text-left text-sm">
+      <caption class="sr-only">Simulação de custo mensal de um atendente contratado</caption>
+      <tbody>
+        {custos.map(([item, valor]) => (
+          <tr class="border-b border-linha"><th scope="row" class="p-4 font-medium">{item}</th><td class="p-4 text-right text-texto">{valor}</td></tr>
+        ))}
+        <tr class="bg-roxo-50"><th scope="row" class="p-4 font-semibold">Total mensal estimado</th><td class="p-4 text-right font-semibold">R$ 3.819</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-3 text-sm text-suave">Simulação ilustrativa. Encargos conforme a legislação trabalhista (FGTS 8%, INSS patronal 20%, 13º e férias); benefícios variam por convenção coletiva e região.</p>
+
+  <div class="prosa mt-16">
+    <h2>Comparação lado a lado</h2>
+  </div>
+  <div class="mt-8"><Comparison /></div>
+
+  <div class="prosa mt-16">
+    <h2>Quando cada opção faz sentido</h2>
+    <h3>O Axon resolve melhor quando</h3>
+    <ul>
+      <li>muitas mensagens chegam à noite, nos fins de semana ou em horários de pico;</li>
+      <li>boa parte das perguntas se repete (preço, horário, endereço, disponibilidade);</li>
+      <li>o atendimento envolve agendar, qualificar ou confirmar;</li>
+      <li>você quer crescer o volume sem aumentar a equipe na mesma proporção.</li>
+    </ul>
+    <h3>Uma pessoa faz mais diferença quando</h3>
+    <ul>
+      <li>cada venda é uma negociação longa e única;</li>
+      <li>o volume é muito pequeno, com poucas mensagens por dia;</li>
+      <li>a conversa exige decisões que não podem ser escritas em regras.</li>
+    </ul>
+    <p>Na prática, o Axon não precisa substituir ninguém: ele responde na hora, resolve o rotineiro e passa para a sua equipe, já com o resumo da conversa, o que precisa de atenção humana.</p>
+  </div>
+  <div class="mt-8"><CtaWhatsApp origem="axon-vs-atendente" /></div>
+  <p class="mt-10 text-sm text-suave">Leia também: <a class="text-roxo underline" href="/quanto-custa-agente-ia-whatsapp/">Quanto custa um agente de IA</a> · <a class="text-roxo underline" href="/blog/como-calcular-roi-agente-ia-whatsapp/">Como calcular o retorno</a></p>
+</ArticleShell>

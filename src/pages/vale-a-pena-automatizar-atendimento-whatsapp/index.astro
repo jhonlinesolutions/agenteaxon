@@ -1,0 +1,85 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import Icon from '../../components/Icon.astro';
+import { SITE } from '../../config/site';
+
+const path = '/vale-a-pena-automatizar-atendimento-whatsapp/';
+const updated = '2026-10-29';
+
+const sinais = [
+  { c: 'Mensagens fora do horário', s: 'De manhã, o WhatsApp está cheio de conversas que ninguém respondeu.', i: 'Muito alto' },
+  { c: 'Agendamento pelo WhatsApp', s: 'Consultas, visitas ou serviços são marcados por mensagem.', i: 'Muito alto' },
+  { c: 'Perguntas repetidas', s: 'Preço, horário e disponibilidade aparecem o dia todo.', i: 'Alto' },
+  { c: 'Equipe atrasada nos picos', s: 'Sextas, fins de semana e datas especiais viram fila.', i: 'Alto' },
+  { c: 'Lead precisa ser qualificado', s: 'Antes de vender, alguém precisa fazer as mesmas perguntas.', i: 'Alto' },
+  { c: 'Volume diário relevante', s: 'Mais mensagens do que a equipe consegue responder na hora.', i: 'Alto' },
+];
+
+const naoAgora = [
+  { t: 'Pouquíssimas mensagens por dia', d: 'O atendimento manual ainda dá conta e pode ser mais pessoal.' },
+  { t: 'Vendas totalmente consultivas', d: 'Quando cada conversa é única e longa, uma pessoa deve conduzir desde o início.' },
+  { t: 'Oferta ainda mudando toda semana', d: 'Se o que você vende ainda não está definido, estabilize antes de automatizar.' },
+];
+
+const article = {
+  '@type': 'Article',
+  headline: 'Vale a pena automatizar o atendimento no WhatsApp?',
+  datePublished: '2025-05-29',
+  dateModified: updated,
+  author: { '@type': 'Organization', name: 'Equipe Axon', url: SITE.url },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: new URL(path, SITE.url).href,
+};
+---
+<ArticleShell
+  seoTitle="Vale a Pena Automatizar o Atendimento no WhatsApp? | Axon"
+  description="Análise honesta de quando vale a pena automatizar o atendimento no WhatsApp com IA e quando não vale. Critérios práticos para decidir com segurança."
+  path={path}
+  eyebrow="Guia de decisão"
+  title="Vale a pena automatizar o atendimento no WhatsApp?"
+  lead="Automação bem feita resolve gargalos. Mal feita, irrita o cliente. Este guia ajuda você a saber em qual situação está."
+  updated={updated}
+  answer="Vale a pena quando o seu WhatsApp recebe mensagens fora do horário, perguntas repetidas, pedidos de agendamento ou picos que a equipe não acompanha. Se três ou mais desses sinais aparecem no seu dia a dia, um agente de IA tende a se pagar. Com poucas mensagens por dia ou vendas totalmente consultivas, ainda não é a prioridade."
+  breadcrumbs={[{ name: 'Vale a pena?', path }]}
+  jsonLd={[article]}
+  ctaOrigem="vale-a-pena-final"
+>
+  <div class="prosa">
+    <h2>Sinais de que vale a pena</h2>
+    <p>Quanto mais destes sinais você reconhece no seu atendimento, maior o ganho com um agente de IA:</p>
+  </div>
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+    {sinais.map((s, i) => (
+      <li class="cartao flex gap-4 p-6" data-reveal={(i % 2) * 90}>
+        <span class="mt-1 grid size-8 shrink-0 place-items-center rounded-full bg-verde/15 text-verde"><Icon name="check" class="size-4" /></span>
+        <div>
+          <h3 class="font-semibold">{s.c}</h3>
+          <p class="mt-1 leading-relaxed text-texto">{s.s}</p>
+          <p class="mt-3 text-xs font-semibold tracking-wide text-roxo uppercase">Impacto: {s.i}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+
+  <div class="prosa mt-16">
+    <h2>Quando ainda não é a prioridade</h2>
+    <p>Sendo honestos, há casos em que automatizar não resolve o problema principal:</p>
+  </div>
+  <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+    {naoAgora.map((n) => (
+      <li class="cartao p-6">
+        <span class="grid size-8 place-items-center rounded-full bg-[#ffe9ee] text-[#e0587a]"><Icon name="x" class="size-4" /></span>
+        <h3 class="mt-4 font-semibold">{n.t}</h3>
+        <p class="mt-1 leading-relaxed text-texto">{n.d}</p>
+      </li>
+    ))}
+  </ul>
+
+  <div class="prosa mt-16">
+    <h2>Como decidir sem chute</h2>
+    <p>Antes de qualquer proposta, fazemos um <strong>diagnóstico gratuito</strong> do seu atendimento: volume, horários, tipos de pergunta e onde as conversas se perdem. Com isso mostramos uma projeção honesta. Se não fizer sentido automatizar agora, dizemos antes.</p>
+  </div>
+  <div class="mt-8"><CtaWhatsApp origem="vale-a-pena" /></div>
+  <p class="mt-10 text-sm text-suave">Leia também: <a class="text-roxo underline" href="/quanto-custa-agente-ia-whatsapp/">Quanto custa</a> · <a class="text-roxo underline" href="/axon-vs-atendente/">Axon vs. contratar um atendente</a></p>
+</ArticleShell>

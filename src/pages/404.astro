@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+---
+<Base title="Página não encontrada | Axon" description="A página que você procura não existe ou mudou de endereço." path="/404/" noindex>
+  <section class="relative overflow-hidden">
+    <div class="orbe -top-24 right-0 size-96 bg-[#d9ccff]" aria-hidden="true"></div>
+    <div class="container-x relative max-w-3xl py-28 text-center">
+      <p class="titulo gradiente-texto text-8xl">404</p>
+      <h1 class="titulo mt-4 text-4xl sm:text-5xl">Essa página não respondeu.</h1>
+      <p class="mt-4 text-lg text-texto">Ao contrário do Axon, que sempre responde. A página pode ter mudado de endereço.</p>
+      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/" class="btn btn-fantasma">Voltar ao início</a>
+        <CtaWhatsApp origem="404" label="Falar com o Axon" />
+      </div>
+    </div>
+  </section>
+</Base>

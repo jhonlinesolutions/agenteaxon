@@ -1,0 +1,70 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import { SITE } from '../../config/site';
+
+const path = '/privacidade/';
+const c = SITE.company;
+---
+<ArticleShell
+  seoTitle="Política de Privacidade | Axon"
+  description="Como o Axon e a JH Online Solutions coletam, usam e protegem seus dados pessoais, em conformidade com a LGPD (Lei 13.709/2018)."
+  path={path}
+  title="Política de Privacidade"
+  lead="Em conformidade com a Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018)."
+  updated="2026-10-29"
+  breadcrumbs={[{ name: 'Privacidade', path }]}
+>
+  <div class="prosa pb-10">
+    <h2>1. Quem somos</h2>
+    <p>A <strong>{c.legalName}</strong>, CNPJ {c.cnpj}, com sede na {c.street}, {c.city} – {c.region}, CEP {c.postalCode}, é a controladora dos dados pessoais tratados por meio do site agenteaxon.com.br e dos serviços do produto <strong>Axon</strong>. Para questões sobre privacidade, escreva para <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+
+    <h2>2. Dados que tratamos</h2>
+    <h3>2.1 Dados que você nos envia</h3>
+    <p>Quando você conversa conosco pelo WhatsApp ou por e-mail, tratamos as informações que você decide compartilhar, como nome, número de telefone, e-mail, nome e segmento da empresa, volume de atendimentos e o conteúdo das mensagens.</p>
+    <h3>2.2 Dados coletados automaticamente</h3>
+    <p>Ao navegar pelo site, coletamos dados de uso como endereço IP, tipo de dispositivo e navegador, páginas visitadas, tempo de permanência e origem do acesso. Esses dados são coletados por ferramentas de análise e de medição de anúncios: <strong>Google Analytics</strong>, <strong>Google Ads</strong> e <strong>Meta Pixel</strong>.</p>
+
+    <h2>3. Como usamos seus dados</h2>
+    <ul>
+      <li>responder ao seu contato e preparar diagnósticos e propostas;</li>
+      <li>prestar os serviços contratados;</li>
+      <li>medir o desempenho do site e das nossas campanhas;</li>
+      <li>cumprir obrigações legais e regulatórias;</li>
+      <li>prevenir fraudes e garantir a segurança dos sistemas.</li>
+    </ul>
+    <p>Não vendemos nem alugamos seus dados pessoais.</p>
+
+    <h2>4. Bases legais</h2>
+    <ul>
+      <li><strong>Execução de contrato e procedimentos preliminares</strong>: atendimento a pedidos de diagnóstico, proposta e prestação do serviço;</li>
+      <li><strong>Legítimo interesse</strong>: análise de desempenho do site e melhoria dos serviços;</li>
+      <li><strong>Consentimento</strong>: quando exigido para cookies de medição e publicidade;</li>
+      <li><strong>Obrigação legal</strong>: quando exigido por lei ou autoridade competente.</li>
+    </ul>
+
+    <h2>5. Compartilhamento</h2>
+    <p>Seus dados podem ser compartilhados apenas com: Google LLC e Meta Platforms (análise e medição de anúncios); provedores de infraestrutura e de mensagens necessários para operar os serviços; e autoridades, quando exigido por lei ou decisão judicial.</p>
+
+    <h2>6. Armazenamento e segurança</h2>
+    <p>Adotamos medidas técnicas e organizacionais para proteger suas informações contra acesso não autorizado, perda ou alteração, incluindo criptografia em trânsito (HTTPS/TLS), acesso restrito a pessoas autorizadas, isolamento dos dados por cliente e cópias de segurança regulares.</p>
+
+    <h2>7. Seus direitos</h2>
+    <p>Como titular, você pode solicitar: confirmação e acesso aos dados, correção, anonimização ou eliminação, portabilidade, informação sobre compartilhamento, revogação do consentimento e oposição ao tratamento. Basta escrever para <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Respondemos em até 15 dias.</p>
+
+    <h2>8. Cookies</h2>
+    <p>Usamos cookies essenciais ao funcionamento do site e cookies de análise e de publicidade (Google Analytics, Google Ads e Meta Pixel). Você pode bloquear ou apagar cookies nas configurações do seu navegador; algumas funções do site podem ser afetadas.</p>
+
+    <h2>9. Retenção</h2>
+    <ul>
+      <li><strong>Contatos comerciais</strong>: pelo tempo necessário à negociação, por no máximo 2 anos sem novo contato;</li>
+      <li><strong>Dados de navegação</strong>: conforme a configuração das ferramentas de análise (padrão de 14 meses no Google Analytics);</li>
+      <li><strong>Clientes</strong>: conforme o contrato e as obrigações legais.</li>
+    </ul>
+
+    <h2>10. Alterações</h2>
+    <p>Esta política pode ser atualizada periodicamente. A data da última atualização fica sempre indicada no topo da página.</p>
+
+    <h2>11. Contato</h2>
+    <p>E-mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> · WhatsApp: {SITE.whatsappDisplay}. Se não ficar satisfeito com a nossa resposta, você pode procurar a Autoridade Nacional de Proteção de Dados (<a href="https://www.gov.br/anpd" target="_blank" rel="noopener">ANPD</a>).</p>
+  </div>
+</ArticleShell>

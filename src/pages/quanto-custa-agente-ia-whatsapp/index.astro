@@ -1,0 +1,104 @@
+---
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+import Faq from '../../components/Faq.astro';
+import { SITE } from '../../config/site';
+
+const path = '/quanto-custa-agente-ia-whatsapp/';
+const updated = '2026-10-29';
+
+const fatores = [
+  { t: 'Volume de conversas', d: 'Quantas mensagens o seu WhatsApp recebe por dia e em quais horários. Mais volume exige mais capacidade de processamento.' },
+  { t: 'O que o agente precisa fazer', d: 'Só tirar dúvidas é diferente de qualificar leads, agendar, confirmar presença, consultar pedidos ou encaminhar casos para a equipe.' },
+  { t: 'Áudio, imagem e documentos', d: 'Interpretar áudios e imagens enviados pelo cliente consome mais recursos do que conversas só em texto.' },
+  { t: 'Integrações', d: 'Conectar agenda, CRM, planilha, sistema de pedidos ou outras ferramentas do seu negócio.' },
+  { t: 'Quantidade de números', d: 'Um único WhatsApp ou vários números (unidades, filiais, setores).' },
+  { t: 'Tamanho da base de conhecimento', d: 'Quantidade de produtos, serviços, regras e informações que o agente precisa dominar.' },
+];
+
+const faixas = [
+  { cat: 'Ferramentas de fluxo (chatbot de menu)', entrega: 'Menus e respostas prontas. Não entende mensagens fora do roteiro e não lembra do cliente.', quando: 'Volume baixo e perguntas sempre iguais.' },
+  { cat: 'Agente de IA sob medida (como o Axon)', entrega: 'Conversa de verdade, entende texto, áudio e imagem, lembra do histórico e segue as regras do seu negócio, com implantação e suporte inclusos.', quando: 'Pequenas e médias empresas que vendem ou agendam pelo WhatsApp.' },
+  { cat: 'Plataformas corporativas', entrega: 'Suítes completas de atendimento multicanal com IA.', quando: 'Grandes operações, com equipe técnica própria e projetos longos.' },
+];
+
+const faq = [
+  { q: 'Quanto custa o Axon por mês?', a: `Os planos do Axon começam a partir de R$ ${SITE.priceFrom} por mês. O valor exato sai de uma proposta sob medida, feita depois de um diagnóstico gratuito do seu atendimento.` },
+  { q: 'Existe taxa de implantação?', a: 'A implantação faz parte da proposta e é combinada antes de começar. Você sabe o valor total antes de decidir, sem cobranças surpresa.' },
+  { q: 'Posso testar antes de pagar a mensalidade?', a: 'Sim. O Axon pode ser testado por 15 dias no seu negócio. Se não gostar, a gente desliga e você não paga mais nada.' },
+  { q: 'Tem fidelidade ou multa?', a: 'Não. O plano é mensal e pode ser cancelado quando quiser, com aviso prévio de 30 dias.' },
+];
+
+const article = {
+  '@type': 'Article',
+  headline: 'Quanto custa um agente de IA para WhatsApp',
+  description: 'O que define o preço de um agente de IA para WhatsApp e quanto custa o Axon.',
+  datePublished: '2025-05-29',
+  dateModified: updated,
+  author: { '@type': 'Organization', name: 'Equipe Axon', url: SITE.url },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  mainEntityOfPage: new URL(path, SITE.url).href,
+};
+---
+<ArticleShell
+  seoTitle="Quanto Custa um Agente de IA para WhatsApp? Preços e Fatores | Axon"
+  description="Quanto custa um agente de IA para WhatsApp: o que influencia o preço, faixas do mercado e por que o Axon tem planos a partir de R$ 497/mês."
+  path={path}
+  eyebrow="Guia de preços"
+  title="Quanto custa um agente de IA para WhatsApp?"
+  lead="A resposta depende do que o agente precisa fazer no seu negócio. Aqui está o que influencia o preço, como o mercado se divide e quanto custa o Axon."
+  updated={updated}
+  answer={`Um agente de IA para WhatsApp sob medida, como o Axon, custa <strong>a partir de R$ ${SITE.priceFrom} por mês</strong>. O valor final depende do volume de conversas, das tarefas que o agente vai executar, do uso de áudio e imagem e das integrações. Por isso o preço sai de uma proposta feita depois de um diagnóstico gratuito, com 15 dias de teste.`}
+  breadcrumbs={[{ name: 'Quanto custa', path }]}
+  jsonLd={[article]}
+  ctaOrigem="quanto-custa-final"
+>
+  <div class="prosa">
+    <h2>O que define o preço</h2>
+    <p>Dois negócios do mesmo tamanho podem precisar de agentes bem diferentes. Estes são os fatores que mais pesam na proposta:</p>
+  </div>
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+    {fatores.map((f, i) => (
+      <li class="cartao p-6" data-reveal={(i % 2) * 90}>
+        <h3 class="font-semibold">{f.t}</h3>
+        <p class="mt-2 leading-relaxed text-texto">{f.d}</p>
+      </li>
+    ))}
+  </ul>
+
+  <div class="prosa mt-16">
+    <h2>Como o mercado se divide</h2>
+    <p>Existem basicamente três tipos de solução para automatizar o atendimento no WhatsApp. A diferença de preço acompanha a diferença no que cada uma entrega.</p>
+  </div>
+  <div class="cartao mt-8 overflow-x-auto overflow-y-hidden">
+    <table class="w-full min-w-[620px] text-left text-sm">
+      <thead><tr class="border-b border-linha"><th class="p-4">Tipo de solução</th><th class="p-4">O que entrega</th><th class="p-4">Faz sentido quando</th></tr></thead>
+      <tbody>
+        {faixas.map((f) => (
+          <tr class:list={['border-b border-linha last:border-0', f.cat.includes('Axon') && 'bg-roxo-50/60']}>
+            <th scope="row" class="p-4 font-semibold">{f.cat}</th><td class="p-4 text-texto">{f.entrega}</td><td class="p-4 text-texto">{f.quando}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prosa mt-16">
+    <h2>Quanto custa o Axon</h2>
+    <p>Os planos do Axon começam em <strong>R$ {SITE.priceFrom} por mês</strong>. Antes de qualquer proposta, fazemos um diagnóstico gratuito do seu atendimento: volume, horários, perguntas mais comuns e onde as vendas se perdem. Se a automação não fizer sentido para você, dizemos antes.</p>
+    <p>Em todos os planos estão inclusos:</p>
+    <ul>
+      <li>configuração completa feita pela nossa equipe, sem exigir conhecimento técnico;</li>
+      <li>nome, tom de voz, regras e base de conhecimento do seu negócio;</li>
+      <li>integração com o seu número de WhatsApp;</li>
+      <li>memória do histórico de conversas de cada cliente;</li>
+      <li>ambiente separado para os dados do seu negócio;</li>
+      <li>suporte e ajustes contínuos, sem fidelidade.</li>
+    </ul>
+    <p>E você pode <strong>testar por 15 dias</strong> no seu negócio: se não gostar, a gente desliga e você não paga mais nada.</p>
+  </div>
+  <div class="mt-8"><CtaWhatsApp origem="quanto-custa" label="Quero minha proposta" /></div>
+
+  <div class="mt-20"><Faq items={faq} title="Dúvidas sobre preço" /></div>
+  <p class="mt-10 text-sm text-suave">Leia também: <a class="text-roxo underline" href="/axon-vs-atendente/">Axon vs. contratar um atendente</a> · <a class="text-roxo underline" href="/vale-a-pena-automatizar-atendimento-whatsapp/">Vale a pena automatizar?</a></p>
+</ArticleShell>

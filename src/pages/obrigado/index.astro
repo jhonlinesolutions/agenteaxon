@@ -1,0 +1,18 @@
+---
+// Mantida por compatibilidade (pode ter vínculo com conversões antigas). Só PageView; sem evento de conversão.
+import ArticleShell from '../../layouts/ArticleShell.astro';
+import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
+
+const path = '/obrigado/';
+---
+<ArticleShell
+  seoTitle="Obrigado! | Axon"
+  description="Recebemos o seu contato. Continue a conversa com o Axon pelo WhatsApp."
+  path={path}
+  title="Obrigado pelo contato!"
+  lead="Para seguir agora mesmo, continue a conversa pelo WhatsApp. Quem te atende é o próprio Axon."
+  breadcrumbs={[{ name: 'Obrigado', path }]}
+  noindex
+>
+  <div class="pb-10"><CtaWhatsApp origem="obrigado" label="Continuar no WhatsApp" /></div>
+</ArticleShell>
