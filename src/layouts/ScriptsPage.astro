@@ -1,0 +1,57 @@
+---
+import ArticleShell from './ArticleShell.astro';
+import ScriptsList from '../components/ScriptsList.astro';
+import CtaWhatsApp from '../components/CtaWhatsApp.astro';
+import type { ScriptCategoria } from '../data/scripts/types';
+import { SITE } from '../config/site';
+
+interface Props {
+  path: string;
+  seoTitle: string;
+  description: string;
+  title: string;
+  lead: string;
+  categorias: ScriptCategoria[];
+  ogImage?: string;
+  publico: string;
+}
+
+const { path, seoTitle, description, title, lead, categorias, ogImage, publico } = Astro.props;
+const origem = path.replaceAll('/', '');
+
+const howTo = {
+  '@type': 'CreativeWork',
+  name: title,
+  description,
+  inLanguage: 'pt-BR',
+  isAccessibleForFree: true,
+  audience: { '@type': 'Audience', audienceType: publico },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  url: new URL(path, SITE.url).href,
+};
+---
+<ArticleShell
+  seoTitle={seoTitle}
+  description={description}
+  path={path}
+  eyebrow="Material gratuito"
+  title={title}
+  lead={lead}
+  breadcrumbs={[{ name: 'Scripts para WhatsApp', path }]}
+  jsonLd={[howTo]}
+  ogImage={ogImage}
+  ctaOrigem={`${origem}-final`}
+  wide
+>
+  <div class="relative overflow-hidden rounded-3xl bg-tinta p-7 text-white sm:p-9" data-reveal>
+    <div class="orbe -top-24 -right-16 size-72 bg-roxo opacity-60" aria-hidden="true"></div>
+    <div class="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <p class="font-semibold text-ciano">E se ninguém precisasse copiar e colar?</p>
+        <p class="mt-2 leading-relaxed text-white/80">Os scripts ajudam no atendimento manual. O Axon faz isso sozinho, 24 horas por dia, adaptando cada resposta à conversa.</p>
+      </div>
+      <CtaWhatsApp origem={origem} label="Ver o Axon em ação" />
+    </div>
+  </div>
+  <div class="mt-12"><ScriptsList categorias={categorias} /></div>
+</ArticleShell>

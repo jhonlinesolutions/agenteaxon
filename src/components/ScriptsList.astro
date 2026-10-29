@@ -1,0 +1,45 @@
+---
+import ScriptCard from './ScriptCard.astro';
+import type { ScriptCategoria } from '../data/scripts/types';
+
+interface Props { categorias: ScriptCategoria[] }
+const { categorias } = Astro.props;
+
+const slug = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+let n = 0;
+const numeradas = categorias.map((c) => ({ ...c, itens: c.itens.map((i) => ({ ...i, numero: ++n })) }));
+---
+<nav aria-label="Categorias" class="cartao p-5">
+  <p class="text-sm font-semibold">Como usar</p>
+  <p class="mt-1 text-sm leading-relaxed text-texto">Copie a mensagem e troque os campos <strong>[entre colchetes]</strong> pelas informações do seu negócio.</p>
+  <ul class="mt-4 flex flex-wrap gap-2">
+    {numeradas.map((c) => (
+      <li><a href={`#${slug(c.categoria)}`} class="inline-flex items-center gap-2 rounded-full border border-linha bg-white px-3 py-1.5 text-sm hover:border-roxo hover:text-roxo">{c.categoria} <span class="text-xs text-suave">{c.itens.length}</span></a></li>
+    ))}
+  </ul>
+</nav>
+
+{numeradas.map((c) => (
+  <section id={slug(c.categoria)} class="scroll-mt-24 pt-14">
+    <h2 class="titulo text-3xl sm:text-4xl">{c.categoria}</h2>
+    {c.sub && <p class="mt-1 text-texto">{c.sub}</p>}
+    <ul class="mt-6 grid gap-4 md:grid-cols-2">
+      {c.itens.map((i) => <ScriptCard numero={i.numero} titulo={i.titulo} texto={i.texto} />)}
+    </ul>
+  </section>
+))}
+
+<script>
+  document.addEventListener('click', async (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-copy]');
+    if (!btn) return;
+    const texto = btn.closest('[data-script]')?.querySelector('[data-script-text]')?.textContent ?? '';
+    try {
+      await navigator.clipboard.writeText(texto);
+      btn.textContent = 'Copiado ✓';
+    } catch {
+      btn.textContent = 'Selecione o texto e copie';
+    }
+    setTimeout(() => (btn.textContent = 'Copiar mensagem'), 2000);
+  });
+</script>
