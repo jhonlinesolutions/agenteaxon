@@ -17,7 +17,7 @@ const { post, headings, related, minutes } = Astro.props;
 const { title, description, pubDate, updatedDate, ogImage } = post.data;
 const path = `/blog/${post.id}/`;
 const origem = `blog/${post.id}`;
-const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Sao_Paulo' });
+const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const toc = headings.filter((h) => h.depth === 2);
 
 const ld = {
