@@ -1,0 +1,21 @@
+# Axon — Agente de IA para WhatsApp
+
+> O Axon é um agente de inteligência artificial que atende os clientes de uma empresa no WhatsApp, 24 horas por dia. Ele responde na hora, entende texto, áudio e imagem, lembra do histórico de cada cliente, segue o tom e as regras do negócio e leva a conversa até a venda ou o agendamento, chamando a equipe humana quando necessário. É um produto da JH Online Solutions LTDA (CNPJ 48.194.871/0001-10, Belo Horizonte – MG, Brasil).
+
+## Fatos principais
+
+- Preço: planos a partir de R$ 497/mês. O valor final é definido em proposta sob medida, após diagnóstico gratuito (depende do volume de conversas, tarefas do agente, áudio/imagem e integrações).
+- Teste: 15 dias no negócio do cliente; sem fidelidade (cancelamento com aviso de 30 dias).
+- Implantação: em até 48 horas, feita pela equipe do Axon; não exige conhecimento técnico.
+- Segmentos: clínicas e consultórios, imobiliárias, estética e beleza, restaurantes e delivery, advocacia e contabilidade, lojas e e-commerce, proteção veicular.
+- Contato: WhatsApp +55 11 96376-5638 (https://wa.me/5511963765638) · contato@jhonlinesolutions.com.br
+
+## Páginas
+
+- [Início](https://agenteaxon.com.br/): o que o Axon faz, como funciona, comparação e investimento
+- [Quanto custa um agente de IA para WhatsApp](https://agenteaxon.com.br/quanto-custa-agente-ia-whatsapp/): fatores de preço e faixas do mercado
+- [Vale a pena automatizar o atendimento no WhatsApp?](https://agenteaxon.com.br/vale-a-pena-automatizar-atendimento-whatsapp/): quando faz e quando não faz sentido
+- [Axon vs. contratar um atendente](https://agenteaxon.com.br/axon-vs-atendente/): custo real e quando cada opção é melhor
+- [Sobre](https://agenteaxon.com.br/sobre/) · [Contato](https://agenteaxon.com.br/contato/)
+- [Blog](https://agenteaxon.com.br/blog/): guias sobre atendimento no WhatsApp e agentes de IA
+- [Scripts gratuitos para clínicas](https://agenteaxon.com.br/scripts-whatsapp/) · [para proteção veicular](https://agenteaxon.com.br/scripts-whatsapp-veicular/)

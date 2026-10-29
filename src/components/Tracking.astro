@@ -1,7 +1,11 @@
 ---
 import { SITE } from '../config/site';
 ---
-<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4}`}></script>
+<!--
+  GA4, Google Ads e Meta Pixel: as filas (dataLayer/fbq) existem desde o início, então PageView e cliques
+  são registrados mesmo antes de os scripts chegarem. Os scripts só carregam na primeira interação ou após 4s,
+  para não pesar no carregamento da página.
+-->
 <script is:inline define:vars={{ ga4: SITE.ga4, ads: SITE.adsId, pixel: SITE.pixelId }}>
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { dataLayer.push(arguments); };
@@ -9,9 +13,24 @@ import { SITE } from '../config/site';
   gtag('config', ga4);
   gtag('config', ads);
 
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  var n = (window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); });
+  if (!window._fbq) window._fbq = n;
+  n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
   fbq('init', pixel);
   fbq('track', 'PageView');
+
+  var carregado = false;
+  function carregar() {
+    if (carregado) return;
+    carregado = true;
+    ['https://www.googletagmanager.com/gtag/js?id=' + ga4, 'https://connect.facebook.net/en_US/fbevents.js'].forEach(function (src) {
+      var s = document.createElement('script'); s.async = true; s.src = src; document.head.appendChild(s);
+    });
+  }
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, carregar, { once: true, passive: true });
+  });
+  setTimeout(carregar, 4000);
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('[data-wa-origem]');
@@ -19,5 +38,6 @@ import { SITE } from '../config/site';
     var origem = a.getAttribute('data-wa-origem');
     gtag('event', 'whatsapp_click', { origem: origem });
     fbq('track', 'Lead', { content_name: origem });
+    carregar();
   });
 </script>

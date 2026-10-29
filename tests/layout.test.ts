@@ -39,6 +39,19 @@ describe('robustez de movimento', () => {
   });
 });
 
+describe('performance', () => {
+  it('pré-carrega as fontes do título e do texto', () => {
+    const preloads = loadPage('/').querySelectorAll('link[rel="preload"][as="font"]');
+    expect(preloads.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('scripts de tracking não são carregados de forma bloqueante no HTML', () => {
+    const page = loadPage('/');
+    expect(page.querySelector('script[src*="googletagmanager.com"]')).toBeNull();
+    expect(readPage('/')).toContain('fbevents.js'); // carregado sob demanda pelo loader
+  });
+});
+
 describe('WhatsApp', () => {
   it.each(routes)('%s tem botão flutuante com origem', (r) => {
     const a = loadPage(r).querySelector('[data-wa-float]');

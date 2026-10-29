@@ -11,6 +11,9 @@ import Tracking from '../components/Tracking.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import serif400 from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
+import sans400 from '@fontsource/inter-tight/files/inter-tight-latin-400-normal.woff2?url';
+import sans600 from '@fontsource/inter-tight/files/inter-tight-latin-600-normal.woff2?url';
 
 interface Props {
   title: string;
@@ -35,6 +38,7 @@ const path = props.path ?? Astro.url.pathname;
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {[serif400, sans400, sans600].map((href) => <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />)}
     <Seo {...props} path={path} />
     <Tracking />
     <slot name="head" />
