@@ -1,0 +1,32 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const beneficios: { icone: IconName; titulo: string; texto: string }[] = [
+  { icone: 'raio', titulo: 'Responde na hora', texto: 'Em segundos, a qualquer hora. O cliente não espera e não vai para o concorrente.' },
+  { icone: 'conversa', titulo: 'Entende de verdade', texto: 'Mensagem confusa, com erro de digitação ou mudando de assunto no meio: o Axon entende e responde certo.' },
+  { icone: 'ouvido', titulo: 'Ouve áudio e vê imagem', texto: 'O cliente manda do jeito que preferir. O Axon interpreta áudio, foto e documento.' },
+  { icone: 'digitando', titulo: 'Espera o cliente terminar', texto: 'Se ele manda três mensagens seguidas, o Axon lê tudo e responde uma vez, completo, como uma pessoa faria.' },
+  { icone: 'memoria', titulo: 'Lembra de cada cliente', texto: 'Quem voltou dias depois não precisa repetir nada. A conversa continua de onde parou.' },
+  { icone: 'crachá', titulo: 'Fala como a sua empresa', texto: 'Nome, tom de voz e regras do seu negócio. Para o cliente, é como falar com alguém da sua equipe.' },
+  { icone: 'pessoas', titulo: 'Chama sua equipe quando precisa', texto: 'Casos especiais vão para uma pessoa, com o resumo da conversa pronto. Ninguém fica sem resposta.' },
+  { icone: 'escudo', titulo: 'Seus dados separados', texto: 'Cada cliente do Axon tem seu próprio ambiente. As conversas do seu negócio não se misturam com as de ninguém.' },
+];
+---
+<section class="relative overflow-hidden bg-white py-24" aria-labelledby="solucao">
+  <div class="orbe top-10 -left-40 size-96 bg-ciano-50 opacity-80" aria-hidden="true"></div>
+  <div class="container-x relative">
+    <SectionHeading id="solucao" eyebrow="A solução" title='Um atendente que <em class="gradiente-texto not-italic">nunca</em> deixa o cliente esperando' lead="O Axon é um agente de inteligência artificial que conversa no WhatsApp do seu negócio. Não é aquele robô de menu: ele conversa." />
+    <ul class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      {beneficios.map((b, i) => (
+        <li data-reveal={(i % 4) * 90}>
+          <span class="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-roxo to-ciano text-white shadow-lg shadow-roxo/20">
+            <Icon name={b.icone} />
+          </span>
+          <h3 class="mt-4 font-semibold">{b.titulo}</h3>
+          <p class="mt-2 text-[15px] leading-relaxed text-texto">{b.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

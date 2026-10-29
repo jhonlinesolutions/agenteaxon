@@ -1,0 +1,26 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const passos: { icone: IconName; titulo: string; texto: string }[] = [
+  { icone: 'lupa', titulo: 'Diagnóstico grátis', texto: 'Conversamos sobre o seu atendimento hoje: volume de mensagens, perguntas mais comuns, onde trava e o que você quer resolver.' },
+  { icone: 'documento', titulo: 'Proposta sob medida', texto: 'Você recebe um plano feito para o seu negócio, com o que o Axon vai fazer e o investimento mensal.' },
+  { icone: 'foguete', titulo: 'No ar em até 48h', texto: 'Nossa equipe configura tudo no seu número de WhatsApp. Você acompanha, testa e ajustamos junto com você.' },
+];
+---
+<section id="como-funciona" class="container-x scroll-mt-20 py-24" aria-labelledby="como">
+  <SectionHeading id="como" eyebrow="Como funciona" title="Três passos. Nenhuma dor de cabeça." lead="Você não precisa entender de tecnologia. A gente cuida de tudo." center />
+  <ol class="relative mt-14 grid gap-6 md:grid-cols-3">
+    <div class="absolute top-10 right-[16%] left-[16%] hidden h-px bg-gradient-to-r from-roxo/0 via-roxo/40 to-roxo/0 md:block" aria-hidden="true"></div>
+    {passos.map((p, i) => (
+      <li class="cartao relative p-7 text-center" data-reveal={i * 140}>
+        <span class="relative mx-auto grid size-20 place-items-center rounded-full border border-linha bg-fundo text-roxo">
+          <Icon name={p.icone} class="size-7" />
+          <span class="absolute -top-1 -right-1 grid size-7 place-items-center rounded-full bg-roxo text-xs font-bold text-white">{i + 1}</span>
+        </span>
+        <h3 class="mt-5 text-lg font-semibold">{p.titulo}</h3>
+        <p class="mt-2 leading-relaxed text-texto">{p.texto}</p>
+      </li>
+    ))}
+  </ol>
+</section>

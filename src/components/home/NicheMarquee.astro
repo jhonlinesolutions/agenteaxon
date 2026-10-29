@@ -1,0 +1,25 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+
+const nichos: { nome: string; icone: IconName }[] = [
+  { nome: 'Clínicas e consultórios', icone: 'saude' },
+  { nome: 'Imobiliárias', icone: 'casa' },
+  { nome: 'Estética e beleza', icone: 'brilho' },
+  { nome: 'Restaurantes e delivery', icone: 'prato' },
+  { nome: 'Advocacia e contabilidade', icone: 'balanca' },
+  { nome: 'Lojas e e-commerce', icone: 'sacola' },
+  { nome: 'Proteção veicular', icone: 'carro' },
+];
+---
+<section aria-label="Segmentos atendidos" class="relative border-y border-linha bg-white/60 py-5">
+  <div class="overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+    <ul class="flex w-max animate-[marquee_32s_linear_infinite] gap-3 hover:[animation-play-state:paused]">
+      {[...nichos, ...nichos].map((n, i) => (
+        <li aria-hidden={i >= nichos.length ? 'true' : undefined} class="flex items-center gap-2 rounded-full border border-linha bg-white px-4 py-2 text-sm whitespace-nowrap text-texto">
+          <Icon name={n.icone} class="size-4 text-roxo" />
+          {n.nome}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

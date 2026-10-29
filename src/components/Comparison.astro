@@ -1,0 +1,47 @@
+---
+import Icon from './Icon.astro';
+import { SITE } from '../config/site';
+
+type Valor = string | boolean;
+const linhas: { criterio: string; clt: Valor; bot: Valor; axon: Valor }[] = [
+  { criterio: 'Investimento mensal', clt: 'Salário + encargos + benefícios', bot: 'Baixo', axon: `A partir de R$ ${SITE.priceFrom}/mês` },
+  { criterio: 'Disponibilidade', clt: 'Horário comercial', bot: '24h', axon: '24h, 7 dias' },
+  { criterio: 'Entende o que o cliente quis dizer', clt: true, bot: false, axon: true },
+  { criterio: 'Lembra do cliente', clt: true, bot: false, axon: true },
+  { criterio: 'Atende várias pessoas ao mesmo tempo', clt: false, bot: true, axon: true },
+  { criterio: 'Fala com o jeito da sua empresa', clt: true, bot: false, axon: true },
+  { criterio: 'Férias, faltas e rotatividade', clt: 'Sim', bot: 'Não', axon: 'Não' },
+  { criterio: 'Tempo para começar', clt: 'Semanas de treinamento', bot: 'Dias de configuração', axon: 'Até 48h' },
+];
+---
+<div class="cartao overflow-hidden">
+  <div class="overflow-x-auto overflow-y-hidden">
+    <table class="w-full min-w-[640px] text-left text-sm">
+      <caption class="sr-only">Comparativo entre atendente contratado, chatbot comum e Axon</caption>
+      <thead>
+        <tr class="border-b border-linha">
+          <th scope="col" class="p-4 font-medium text-suave">Critério</th>
+          <th scope="col" class="p-4 font-semibold">Atendente contratado</th>
+          <th scope="col" class="p-4 font-semibold">Chatbot de menu</th>
+          <th scope="col" class="bg-roxo-50 p-4 font-semibold text-roxo">Axon</th>
+        </tr>
+      </thead>
+      <tbody>
+        {linhas.map((l, i) => (
+          <tr class="border-b border-linha last:border-0" data-reveal={i * 70}>
+            <th scope="row" class="p-4 font-medium">{l.criterio}</th>
+            {[l.clt, l.bot, l.axon].map((v, j) => (
+              <td class:list={['p-4 text-texto', j === 2 && 'bg-roxo-50/60 font-semibold text-tinta']}>
+                {typeof v === 'boolean'
+                  ? v
+                    ? <span class="inline-flex items-center gap-1.5 text-verde"><Icon name="check" class="size-4" /><span class="sr-only">Sim</span></span>
+                    : <span class="inline-flex items-center gap-1.5 text-[#e0587a]"><Icon name="x" class="size-4" /><span class="sr-only">Não</span></span>
+                  : v}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

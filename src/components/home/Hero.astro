@@ -1,0 +1,32 @@
+---
+import CtaWhatsApp from '../CtaWhatsApp.astro';
+import ChatLoop from './ChatLoop.astro';
+---
+<section class="relative overflow-hidden">
+  <div class="orbe -top-24 -right-20 size-[26rem] bg-[#c9b6ff]" aria-hidden="true"></div>
+  <div class="orbe top-56 right-[18%] size-80 bg-[#8eeaf8] [animation-direction:reverse] [animation-duration:20s]" aria-hidden="true"></div>
+  <div class="orbe -bottom-32 -left-24 size-72 bg-roxo-100 [animation-duration:22s]" aria-hidden="true"></div>
+
+  <div class="container-x relative grid items-center gap-14 pt-12 pb-16 md:pt-20 lg:grid-cols-[1.15fr_1fr] lg:pb-24">
+    <div>
+      <span class="selo"><span class="ponto-online"></span> Atendimento 24h no WhatsApp</span>
+      <h1 class="titulo mt-6 text-[2.75rem] sm:text-6xl lg:text-7xl">
+        Nenhum cliente <em class="gradiente-texto not-italic">sem resposta</em> no seu WhatsApp.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-texto">
+        O Axon responde na hora, entende o que o cliente quer e leva a conversa até a venda ou o agendamento,
+        de dia, de noite e no fim de semana.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <CtaWhatsApp origem="home-hero" />
+        <a href="#como-funciona" class="btn btn-fantasma">Ver como funciona</a>
+      </div>
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-suave">
+        <li class="flex items-center gap-2"><span class="text-verde">✓</span> No ar em até 48h</li>
+        <li class="flex items-center gap-2"><span class="text-verde">✓</span> 15 dias de teste</li>
+        <li class="flex items-center gap-2"><span class="text-verde">✓</span> Sem fidelidade</li>
+      </ul>
+    </div>
+    <ChatLoop />
+  </div>
+</section>

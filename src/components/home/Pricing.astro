@@ -1,0 +1,54 @@
+---
+import CtaWhatsApp from '../CtaWhatsApp.astro';
+import Icon from '../Icon.astro';
+import { SITE } from '../../config/site';
+
+const incluso = [
+  'Implantação e configuração feitas pela nossa equipe',
+  'Nome, tom de voz e regras do seu negócio',
+  'Integração com o seu número de WhatsApp',
+  'Memória das conversas de cada cliente',
+  'Atendimento 24 horas, 7 dias por semana',
+  'Acompanhamento e ajustes durante o teste',
+  'Suporte contínuo',
+  'Sem fidelidade',
+];
+---
+<section id="investimento" class="container-x scroll-mt-20 py-24" aria-labelledby="preco">
+  <div class="relative overflow-hidden rounded-[2rem] bg-tinta px-6 py-14 text-white sm:px-12 lg:px-16" data-reveal>
+    <div class="orbe -top-24 -right-24 size-96 bg-roxo opacity-60" aria-hidden="true"></div>
+    <div class="orbe -bottom-32 left-10 size-80 bg-ciano opacity-30" aria-hidden="true"></div>
+    <div class="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold tracking-wide text-ciano uppercase">Investimento</p>
+        <h2 id="preco" class="titulo mt-3 text-4xl sm:text-5xl">Um plano do tamanho do seu atendimento</h2>
+        <p class="mt-5 text-lg leading-relaxed text-white/75">
+          Cada negócio tem gargalos diferentes. Por isso o valor sai de um diagnóstico e de uma proposta sob medida,
+          considerando o volume de conversas, o que o Axon precisa fazer e as integrações necessárias.
+        </p>
+        <p class="mt-8 text-white/70">Planos a partir de</p>
+        <p class="mt-1 flex items-baseline gap-2">
+          <span class="titulo text-6xl sm:text-7xl">R$ {SITE.priceFrom}</span><span class="text-white/70">/mês</span>
+        </p>
+        <p class="sr-only">Planos a partir de R$ {SITE.priceFrom} por mês.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <CtaWhatsApp origem="home-investimento" label="Quero minha proposta" />
+        </div>
+      </div>
+      <div class="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur">
+        <p class="inline-flex items-center gap-2 rounded-full bg-verde/15 px-3 py-1 text-sm font-semibold text-verde">
+          <span class="ponto-online"></span> Teste por 15 dias
+        </p>
+        <p class="mt-4 leading-relaxed text-white/80">
+          Coloque o Axon para atender no seu negócio por 15 dias. Gostou, continua com o plano combinado. Não gostou,
+          a gente desliga e você não paga mais nada.
+        </p>
+        <ul class="mt-6 grid gap-3 text-sm">
+          {incluso.map((item) => (
+            <li class="flex gap-3"><Icon name="check" class="mt-0.5 size-4 shrink-0 text-verde" /> {item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+---
+// Conversa de exemplo no celular do Hero. Sem JS (ou com movimento reduzido) todos os balões ficam visíveis.
+const mensagens = [
+  { de: 'cliente', texto: 'Oi! Vocês atendem sábado?', hora: '23:14' },
+  { de: 'axon', texto: 'Oi! Atendemos sim, das 8h às 14h 😊 Quer que eu já reserve um horário pra você?', hora: '23:14' },
+  { de: 'cliente', texto: 'Quero, às 10h. Quanto fica a avaliação?', hora: '23:15' },
+  { de: 'axon', texto: 'A avaliação é gratuita! Reservei sábado às 10h ✅ Te mando um lembrete na sexta.', hora: '23:15' },
+];
+---
+<div class="relative mx-auto w-full max-w-[320px] animate-[flutua_6s_ease-in-out_infinite]">
+  <div class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-roxo/20 to-ciano/20 blur-2xl"></div>
+  <div class="rounded-[2rem] border border-white/80 bg-white/75 p-3 shadow-[0_40px_80px_-30px_rgb(70_30_160/.35)] backdrop-blur-xl">
+    <div class="flex items-center gap-3 border-b border-linha px-2 pt-1 pb-3">
+      <span class="grid size-9 place-items-center rounded-full bg-gradient-to-br from-roxo to-ciano text-sm font-bold text-white">BV</span>
+      <div class="leading-tight">
+        <p class="text-sm font-semibold">Clínica Bem Viver</p>
+        <p class="text-xs text-verde" data-chat-status>online</p>
+      </div>
+    </div>
+    <div class="flex min-h-[300px] flex-col justify-end gap-2 rounded-2xl bg-[#f6f3fd] p-3" data-chat aria-label="Exemplo de conversa do Axon no WhatsApp" role="img">
+      {mensagens.map((m) => (
+        <div
+          data-chat-bubble
+          class:list={[
+            'max-w-[85%] rounded-2xl px-3 py-2 text-[13px] leading-snug shadow-sm transition-all duration-500',
+            m.de === 'cliente' ? 'self-start rounded-bl-md bg-white' : 'self-end rounded-br-md bg-roxo-100',
+          ]}
+        >
+          {m.texto}
+          <span class="ml-1 align-bottom text-[10px] text-suave">{m.hora}</span>
+        </div>
+      ))}
+      <div data-chat-typing class="hidden self-end rounded-2xl rounded-br-md bg-roxo-100 px-3 py-2.5" aria-hidden="true">
+        <span class="flex gap-1">
+          <i class="size-1.5 animate-bounce rounded-full bg-roxo/60"></i>
+          <i class="size-1.5 animate-bounce rounded-full bg-roxo/60 [animation-delay:.15s]"></i>
+          <i class="size-1.5 animate-bounce rounded-full bg-roxo/60 [animation-delay:.3s]"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const chat = document.querySelector<HTMLElement>('[data-chat]');
+  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (chat && !reduz) {
+    const baloes = [...chat.querySelectorAll<HTMLElement>('[data-chat-bubble]')];
+    const digitando = chat.querySelector<HTMLElement>('[data-chat-typing]')!;
+    const status = document.querySelector<HTMLElement>('[data-chat-status]');
+    const espera = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    const esconder = (el: HTMLElement) => { el.style.opacity = '0'; el.style.transform = 'translateY(10px) scale(.96)'; el.style.display = 'none'; };
+    const mostrar = (el: HTMLElement) => {
+      el.style.display = '';
+      requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    };
+
+    const ciclo = async () => {
+      for (;;) {
+        baloes.forEach(esconder);
+        await espera(700);
+        for (const b of baloes) {
+          if (b.classList.contains('self-end')) {
+            digitando.classList.remove('hidden');
+            if (status) status.textContent = 'digitando…';
+            await espera(1300);
+            digitando.classList.add('hidden');
+            if (status) status.textContent = 'online';
+          }
+          mostrar(b);
+          await espera(1500);
+        }
+        await espera(4500);
+        baloes.forEach((b) => { b.style.opacity = '0'; });
+        await espera(600);
+      }
+    };
+    ciclo();
+  }
+</script>

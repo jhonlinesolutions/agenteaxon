@@ -1,4 +1,79 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/home/Hero.astro';
+import NicheMarquee from '../components/home/NicheMarquee.astro';
+import Pains from '../components/home/Pains.astro';
+import Solution from '../components/home/Solution.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import Segments from '../components/home/Segments.astro';
+import Comparison from '../components/Comparison.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Pricing from '../components/home/Pricing.astro';
+import Video from '../components/home/Video.astro';
+import Cases from '../components/home/Cases.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { SITE } from '../config/site';
+
+const faq = [
+  { q: 'O Axon é diferente de um chatbot comum?', a: 'Sim. Chatbots comuns seguem menus e travam quando o cliente foge do roteiro. O Axon usa inteligência artificial para entender o que o cliente quis dizer, mesmo em mensagens confusas, incompletas ou em áudio, e responde como uma pessoa da sua equipe.' },
+  { q: 'Quanto custa o Axon?', a: `Os planos começam a partir de R$ ${SITE.priceFrom} por mês. O valor final depende do volume de conversas, do que o Axon precisa fazer e das integrações do seu negócio, por isso enviamos uma proposta sob medida depois de um diagnóstico gratuito.` },
+  { q: 'Posso testar antes de contratar?', a: 'Pode. Você testa o Axon no seu negócio por 15 dias. Se gostar, continua com o plano combinado; se não gostar, a gente desliga e você não paga mais nada. Não há fidelidade.' },
+  { q: 'Preciso entender de tecnologia?', a: 'Não. Você nos conta como funciona o seu negócio, como faria com um funcionário novo, e nossa equipe configura tudo.' },
+  { q: 'Em quanto tempo o Axon começa a atender?', a: 'Na maioria dos casos, em até 48 horas depois que recebemos as informações do seu negócio.' },
+  { q: 'O Axon pode usar o nome da minha empresa?', a: 'Sim. Ele recebe nome, tom de voz, regras de comportamento e limites de atuação definidos por você. Para o cliente, é como falar com alguém da sua equipe.' },
+  { q: 'E quando o cliente pergunta algo que o Axon não sabe?', a: 'Ele reconhece o limite do que pode responder e encaminha a conversa para uma pessoa da sua equipe, de forma natural, para ninguém ficar sem resposta.' },
+  { q: 'Funciona fora do horário comercial?', a: 'É justamente aí que ele mais ajuda: à noite, de madrugada, em fins de semana e feriados, o Axon continua respondendo, tirando dúvidas e agendando.' },
+  { q: 'Meus dados e os dos meus clientes ficam seguros?', a: 'Sim. Cada negócio tem um ambiente separado e o histórico de conversas não se mistura com o de outros clientes. Tratamos os dados conforme a LGPD.' },
+];
+
+const service = {
+  '@type': 'Service',
+  '@id': `${SITE.url}/#axon`,
+  name: 'Axon — Agente de IA para WhatsApp',
+  serviceType: 'Atendimento automatizado com inteligência artificial no WhatsApp',
+  description: 'Agente de inteligência artificial que atende clientes no WhatsApp 24 horas por dia, entende texto, áudio e imagem, lembra do histórico e leva a conversa até a venda ou o agendamento.',
+  provider: { '@id': `${SITE.url}/#organization` },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+  audience: { '@type': 'BusinessAudience', audienceType: 'Pequenas e médias empresas que atendem pelo WhatsApp' },
+  offers: {
+    '@type': 'Offer',
+    url: `${SITE.url}/`,
+    availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      minPrice: SITE.priceFrom,
+      priceCurrency: 'BRL',
+      unitText: 'mês',
+      referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+    },
+  },
+};
 ---
-<Base title="Axon" description="Placeholder da home do Axon enquanto a Task 3 não é feita, com texto suficiente."><p>home</p></Base>
+<Base
+  title="Axon — Agente de IA para WhatsApp | Nenhum cliente sem resposta"
+  description="O Axon atende seus clientes no WhatsApp na hora, 24h por dia: entende, responde, agenda e vende. Teste por 15 dias. Planos a partir de R$ 497/mês."
+  path="/"
+  jsonLd={[service]}
+>
+  <Hero />
+  <NicheMarquee />
+  <Pains />
+  <Solution />
+  <HowItWorks />
+  <Segments />
+
+  <section class="container-x py-24" aria-labelledby="comparativo">
+    <SectionHeading id="comparativo" eyebrow="Compare" title="Atendente, chatbot ou Axon?" lead="Cada opção tem seu lugar. Veja onde o Axon se encaixa no seu atendimento." />
+    <div class="mt-12"><Comparison /></div>
+    <p class="mt-4 text-sm text-suave" data-reveal>Quer a comparação completa? Leia <a href="/axon-vs-atendente/" class="font-medium text-roxo underline underline-offset-4">Axon vs. contratar um atendente</a>.</p>
+  </section>
+
+  <Pricing />
+  <Video />
+  <Cases />
+
+  <section class="container-x py-24"><Faq items={faq} /></section>
+
+  <FinalCta origem="home-final" />
+</Base>

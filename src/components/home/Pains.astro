@@ -1,0 +1,27 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const dores: { icone: IconName; titulo: string; texto: string }[] = [
+  { icone: 'lua', titulo: 'Mensagem às 21h', texto: 'Ninguém responde. De manhã, o cliente já fechou com quem atendeu primeiro.' },
+  { icone: 'relogio', titulo: 'Fila no horário de pico', texto: 'Equipe afogada em conversas, cliente esperando e a venda esfriando.' },
+  { icone: 'repetir', titulo: 'As mesmas perguntas, o dia todo', texto: 'Preço, horário, endereço, forma de pagamento. Seu time responde tudo de novo, várias vezes por dia.' },
+  { icone: 'queda', titulo: 'O lead que some calado', texto: 'Ele não reclama, só vai embora. E você nem fica sabendo que perdeu a venda.' },
+  { icone: 'memoria', titulo: 'Cliente que precisa repetir tudo', texto: 'Ele volta no dia seguinte e começa do zero. A paciência acaba antes da compra.' },
+  { icone: 'menu', titulo: '“Digite 0 para falar com um atendente”', texto: 'Menus engessados irritam. O cliente quer resposta, não um labirinto de opções.' },
+];
+---
+<section class="container-x py-24" aria-labelledby="dores">
+  <SectionHeading id="dores" eyebrow="O problema" title="Onde o seu atendimento trava hoje" lead="Se você se reconhece em pelo menos um destes, o seu WhatsApp está deixando dinheiro na mesa." />
+  <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {dores.map((d, i) => (
+      <li class="cartao group p-6 transition-transform duration-300 hover:-translate-y-1" data-reveal={i * 90}>
+        <span class="grid size-11 place-items-center rounded-xl bg-roxo-50 text-roxo transition-colors group-hover:bg-roxo group-hover:text-white">
+          <Icon name={d.icone} />
+        </span>
+        <h3 class="mt-5 text-lg font-semibold">{d.titulo}</h3>
+        <p class="mt-2 leading-relaxed text-texto">{d.texto}</p>
+      </li>
+    ))}
+  </ul>
+</section>

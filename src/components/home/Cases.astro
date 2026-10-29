@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from '../SectionHeading.astro';
+
+// Só aparece quando houver pelo menos 3 cases reais em src/content/cases/.
+const MINIMO = 3;
+const cases = await getCollection('cases');
+---
+{cases.length >= MINIMO && (
+  <section class="container-x py-24" data-section="cases" aria-labelledby="cases">
+    <SectionHeading id="cases" eyebrow="Quem já usa" title="Negócios que pararam de perder clientes no WhatsApp" />
+    <ul class="mt-12 grid gap-4 md:grid-cols-3">
+      {cases.map(({ data }, i) => (
+        <li class="cartao flex flex-col p-7" data-reveal={i * 100}>
+          <blockquote class="flex-1 text-lg leading-relaxed">“{data.depoimento}”</blockquote>
+          {data.resultado && <p class="mt-5 font-semibold text-roxo">{data.resultado}</p>}
+          <p class="mt-5 border-t border-linha pt-4 text-sm text-suave">
+            <strong class="text-tinta">{data.autor ?? data.nome}</strong> · {data.segmento}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

@@ -1,0 +1,32 @@
+---
+import Icon, { type IconName } from '../Icon.astro';
+import SectionHeading from '../SectionHeading.astro';
+
+const segmentos: { icone: IconName; nome: string; faz: string; ganho: string }[] = [
+  { icone: 'saude', nome: 'Clínicas e consultórios', faz: 'Agenda consultas, informa convênios e preparo de exames, confirma presença e encaminha urgências.', ganho: 'Agenda organizada e menos faltas' },
+  { icone: 'casa', nome: 'Imobiliárias e corretores', faz: 'Pergunta tipo de imóvel, região, faixa de preço e prazo, e entrega o lead já qualificado.', ganho: 'Corretor focado em quem vai comprar' },
+  { icone: 'brilho', nome: 'Estética e beleza', faz: 'Explica procedimentos, mostra horários livres, agenda e lembra o cliente na véspera.', ganho: 'Agenda cheia sem ficar no celular' },
+  { icone: 'prato', nome: 'Restaurantes e delivery', faz: 'Apresenta o cardápio, tira dúvidas, confirma endereço e informa o prazo de entrega.', ganho: 'Nenhum pedido perdido no pico' },
+  { icone: 'balanca', nome: 'Advocacia e contabilidade', faz: 'Faz a triagem inicial, coleta informações e documentos e agenda a reunião.', ganho: 'Mais tempo para o trabalho técnico' },
+  { icone: 'sacola', nome: 'Lojas e e-commerce', faz: 'Responde sobre produtos, pedidos, prazos, trocas e formas de pagamento.', ganho: 'Menos chamados repetidos' },
+];
+---
+<section class="bg-white py-24" aria-labelledby="segmentos">
+  <div class="container-x">
+    <SectionHeading id="segmentos" eyebrow="Para o seu mercado" title="Treinado para falar a língua do seu negócio" lead="Cada Axon aprende o vocabulário, os processos e as regras do segmento em que vai trabalhar." />
+    <ul class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {segmentos.map((s, i) => (
+        <li class="cartao flex flex-col p-6" data-reveal={(i % 3) * 90}>
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-xl bg-roxo-50 text-roxo"><Icon name={s.icone} /></span>
+            <h3 class="font-semibold">{s.nome}</h3>
+          </div>
+          <p class="mt-4 flex-1 leading-relaxed text-texto">{s.faz}</p>
+          <p class="mt-5 flex items-center gap-2 border-t border-linha pt-4 text-sm font-semibold text-roxo">
+            <Icon name="check" class="size-4" /> {s.ganho}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

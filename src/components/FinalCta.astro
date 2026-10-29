@@ -1,0 +1,21 @@
+---
+import CtaWhatsApp from './CtaWhatsApp.astro';
+
+interface Props { origem: string; title?: string; text?: string }
+const {
+  origem,
+  title = 'Pronto para não perder mais nenhum cliente?',
+  text = 'Chame no WhatsApp. Quem vai te atender é o próprio Axon, e você já sente na prática como seus clientes serão atendidos.',
+} = Astro.props;
+---
+<section class="container-x py-16">
+  <div class="relative overflow-hidden rounded-[2rem] border border-linha bg-gradient-to-br from-roxo-50 via-white to-ciano-50 px-6 py-14 text-center sm:px-12" data-reveal>
+    <div class="orbe -top-20 left-1/2 size-72 -translate-x-1/2 bg-roxo-100" aria-hidden="true"></div>
+    <div class="relative">
+      <h2 class="titulo mx-auto max-w-2xl text-4xl sm:text-5xl">{title}</h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-texto">{text}</p>
+      <CtaWhatsApp origem={origem} class="mt-8" />
+      <p class="mt-3 text-sm text-suave">Diagnóstico grátis · Sem compromisso</p>
+    </div>
+  </div>
+</section>
