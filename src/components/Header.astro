@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/axon-logo.webp';
+import { NAV } from '../config/site';
+import CtaWhatsApp from './CtaWhatsApp.astro';
+
+interface Props { path: string }
+const { path } = Astro.props;
+const ativo = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header class="sticky top-0 z-50 border-b border-transparent transition-colors duration-300" data-header>
+  <div class="absolute inset-0 -z-10 bg-white/70 backdrop-blur-xl [mask-image:linear-gradient(to_bottom,black_70%,transparent)]"></div>
+  <nav class="container-x flex h-16 items-center justify-between gap-4" aria-label="Principal">
+    <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight" aria-label="Axon, página inicial">
+      <Image src={logo} alt="" width={36} height={36} class="size-9" loading="eager" />
+      <span class="text-lg">Axon</span>
+    </a>
+
+    <ul class="hidden items-center gap-1 md:flex">
+      {NAV.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={ativo(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              ativo(item.href) ? 'bg-roxo-50 text-roxo' : 'text-texto hover:text-tinta',
+            ]}
+          >{item.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden md:block">
+      <CtaWhatsApp origem={`header${path}`} label="Falar com o Axon" class="!px-4 !py-2.5 text-sm" />
+    </div>
+
+    <details class="group relative md:hidden">
+      <summary class="grid size-10 cursor-pointer list-none place-items-center rounded-xl border border-linha bg-white [&::-webkit-details-marker]:hidden" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" class="size-5 stroke-current group-open:hidden" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <svg viewBox="0 0 24 24" class="hidden size-5 stroke-current group-open:block" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </summary>
+      <div class="absolute top-12 right-0 w-[min(18rem,calc(100vw-2rem))] rounded-2xl border border-linha bg-white p-3 shadow-xl">
+        <ul class="grid gap-1">
+          {NAV.map((item) => (
+            <li><a href={item.href} class="block rounded-xl px-3 py-2.5 font-medium hover:bg-roxo-50">{item.label}</a></li>
+          ))}
+        </ul>
+        <CtaWhatsApp origem={`menu${path}`} label="Falar com o Axon" class="mt-3 w-full" />
+      </div>
+    </details>
+  </nav>
+</header>

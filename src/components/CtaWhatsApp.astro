@@ -1,0 +1,24 @@
+---
+import { waLink } from '../lib/whatsapp';
+import IconWhatsApp from './IconWhatsApp.astro';
+
+interface Props {
+  origem: string;
+  label?: string;
+  mensagem?: string;
+  variant?: 'primary' | 'ghost';
+  class?: string;
+}
+
+const { origem, label = 'Quero um diagnóstico grátis', mensagem, variant = 'primary', class: extra = '' } = Astro.props;
+---
+<a
+  href={waLink(origem, mensagem)}
+  target="_blank"
+  rel="noopener"
+  data-wa-origem={origem}
+  class:list={['btn', variant === 'primary' ? 'btn-primario' : 'btn-fantasma', extra]}
+>
+  <IconWhatsApp class="size-[18px]" />
+  <span>{label}</span>
+</a>
