@@ -34,11 +34,12 @@ describe('páginas fora do índice', () => {
 });
 
 describe('conteúdo proibido no build', () => {
-  const banned = ['<form', '997', '1.497', 'www.agenteaxon', 'elegantcormorant'];
+  // Preços antigos procurados como preço (R$ 997 / 997/mês), não como dígitos soltos (caminhos SVG têm "997").
+  const banned = [/<form/, /R\$\s?997|997\s?\/\s?m[eê]s/, /1\.497/, /www\.agenteaxon/, /elegantcormorant/];
   it.each(banned)('nenhum HTML contém %s', (term) => {
     const files = allDistFiles('.html');
     expect(files.length).toBeGreaterThan(0);
-    const hits = files.filter((f) => readFileSync(f, 'utf8').includes(term));
+    const hits = files.filter((f) => term.test(readFileSync(f, 'utf8')));
     expect(hits).toEqual([]);
   });
 });
