@@ -31,7 +31,7 @@ describe('posts do blog', () => {
 
 describe('datas exibidas', () => {
   it('post mostra a data de publicação sem voltar um dia pelo fuso', () => {
-    expect(loadPage('/blog/como-calcular-roi-agente-ia-whatsapp/').querySelector('header')!.text).toContain('29 de maio de 2025');
+    expect(loadPage('/blog/como-calcular-roi-agente-ia-whatsapp/').querySelector('article header')!.text).toContain('29 de maio de 2025');
   });
 
   it('índice mostra a data correta', () => {
