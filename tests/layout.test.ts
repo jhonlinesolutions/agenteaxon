@@ -59,3 +59,12 @@ describe('WhatsApp', () => {
     expect(a?.getAttribute('data-wa-origem')).toBeTruthy();
   });
 });
+
+describe('mensagens do WhatsApp no site', () => {
+  it.each(LEGACY_ROUTES)('%s não expõe o código de origem no texto da mensagem', (r) => {
+    for (const a of loadPage(r).querySelectorAll('a[data-wa-origem]')) {
+      const text = new URL(a.getAttribute('href')!).searchParams.get('text') ?? '';
+      expect(text).not.toContain(`(${a.getAttribute('data-wa-origem')})`);
+    }
+  });
+});
