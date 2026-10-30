@@ -5,10 +5,11 @@ import { ldOfType, loadPage, readPage } from './helpers';
 const PUBLICADO: Record<string, string> = {
   '/blog/por-que-seu-chatbot-esta-perdendo-vendas/': '2025-05-28',
   '/blog/whatsapp-business-ai-meta-vs-axon/': '2026-06-15',
+  '/blog/quando-agente-ia-deve-passar-para-humano/': '2026-10-29',
 };
 
 describe('posts do blog', () => {
-  it('são 9 posts', () => expect(BLOG_POSTS.length).toBe(9));
+  it('são 10 posts', () => expect(BLOG_POSTS.length).toBe(10));
 
   it.each(BLOG_POSTS)('%s tem BlogPosting com datas, autor e publisher', (r) => {
     const [post] = ldOfType(loadPage(r), 'BlogPosting');
@@ -40,7 +41,7 @@ describe('datas exibidas', () => {
 });
 
 describe('índice do blog', () => {
-  it('lista os 9 posts', () => {
+  it('lista os 10 posts', () => {
     const links = new Set(loadPage('/blog/').querySelectorAll('a[href^="/blog/"]').map((a) => a.getAttribute('href')));
     for (const r of BLOG_POSTS) expect(links.has(r)).toBe(true);
   });

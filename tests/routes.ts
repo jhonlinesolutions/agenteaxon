@@ -22,6 +22,7 @@ export const INDEXABLE_ROUTES = [
   '/blog/como-calcular-roi-agente-ia-whatsapp/',
   '/blog/clinicas-medicas-ia-reduzir-faltas/',
   '/blog/whatsapp-business-ai-meta-vs-axon/',
+  '/blog/quando-agente-ia-deve-passar-para-humano/',
 ];
 
 export const LEGACY_ROUTES = [...INDEXABLE_ROUTES, ...NOINDEX_ROUTES];
