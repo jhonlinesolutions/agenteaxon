@@ -52,7 +52,9 @@ const mensagens = [
     const esconder = (el: HTMLElement) => { el.style.opacity = '0'; el.style.transform = 'translateY(10px) scale(.96)'; el.style.display = 'none'; };
     const mostrar = (el: HTMLElement) => {
       el.style.display = '';
-      requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      void el.offsetHeight; // aplica o estado escondido antes, para a transição acontecer
+      el.style.opacity = '1';
+      el.style.transform = 'none';
     };
 
     const ciclo = async () => {
