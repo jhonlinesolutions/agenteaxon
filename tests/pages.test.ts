@@ -55,3 +55,11 @@ describe('páginas institucionais', () => {
     expect(existsSync(join(DIST, '404.html'))).toBe(true);
   });
 });
+
+describe('termos de uso', () => {
+  it('elege o foro de Belo Horizonte – MG, sede da matriz', () => {
+    const text = loadPage('/termos/').querySelector('main')!.text;
+    expect(text).toContain('Comarca de Belo Horizonte – MG');
+    expect(text).not.toContain('Comarca de São Paulo');
+  });
+});
