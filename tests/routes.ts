@@ -1,3 +1,10 @@
+import { readFileSync, readdirSync } from 'node:fs';
+
+// Posts lidos da pasta: o n8n publica posts novos automaticamente e os testes acompanham.
+const BLOG_DIR = new URL('../src/content/blog/', import.meta.url);
+export const BLOG_SLUGS = readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md')).map((f) => f.replace(/\.md$/, '')).sort();
+export const blogPubDate = (slug: string) => readFileSync(new URL(`${slug}.md`, BLOG_DIR), 'utf8').match(/^pubDate:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1];
+
 export const NOINDEX_ROUTES = ['/obrigado/', '/assinatura/'];
 
 export const INDEXABLE_ROUTES = [
@@ -13,16 +20,7 @@ export const INDEXABLE_ROUTES = [
   '/privacidade/',
   '/termos/',
   '/blog/',
-  '/blog/por-que-seu-chatbot-esta-perdendo-vendas/',
-  '/blog/api-oficial-vs-solucoes-nao-oficiais-whatsapp-2025/',
-  '/blog/como-funciona-memoria-agente-ia-sessao-historico-rag/',
-  '/blog/5-mensagens-perdidas-sem-atendimento-24h/',
-  '/blog/o-que-e-system-prompt-sucesso-agente/',
-  '/blog/imobiliarias-qualificar-leads-automaticamente-whatsapp/',
-  '/blog/como-calcular-roi-agente-ia-whatsapp/',
-  '/blog/clinicas-medicas-ia-reduzir-faltas/',
-  '/blog/whatsapp-business-ai-meta-vs-axon/',
-  '/blog/quando-agente-ia-deve-passar-para-humano/',
+  ...BLOG_SLUGS.map((s) => `/blog/${s}/`),
 ];
 
 export const LEGACY_ROUTES = [...INDEXABLE_ROUTES, ...NOINDEX_ROUTES];
