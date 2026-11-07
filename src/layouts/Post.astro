@@ -52,7 +52,7 @@ const ld = {
     </header>
 
     <div class="container-x grid max-w-6xl gap-12 lg:grid-cols-[1fr_15rem]">
-      <div class="prosa max-w-3xl min-w-0"><slot /></div>
+      <div class="prosa max-w-3xl min-w-0" data-leitura={post.id}><slot /></div>
       {toc.length > 2 && (
         <aside class="hidden lg:block">
           <nav aria-label="Neste artigo" class="sticky top-24 text-sm">
@@ -88,4 +88,22 @@ const ld = {
   )}
 
   <FinalCta origem={`${origem}-final`} />
+  <script>
+    import { LEITURA_MINIMA, progressoLeitura } from '../lib/leitura';
+
+    // Leitura do artigo: dispara uma vez quando 75% do texto passou pela tela (público de remarketing no Meta).
+    const texto = document.querySelector<HTMLElement>('[data-leitura]');
+    if (texto) {
+      const verificar = () => {
+        const r = texto.getBoundingClientRect();
+        if (progressoLeitura({ topo: r.top, altura: r.height, fimDaTela: window.innerHeight }) < LEITURA_MINIMA) return;
+        window.removeEventListener('scroll', verificar);
+        const artigo = texto.dataset.leitura;
+        const w = window as unknown as { gtag?: (...a: unknown[]) => void; fbq?: (...a: unknown[]) => void };
+        w.gtag?.('event', 'article_read', { artigo });
+        w.fbq?.('track', 'ViewContent', { content_name: artigo, content_category: 'blog' });
+      };
+      window.addEventListener('scroll', verificar, { passive: true });
+    }
+  </script>
 </Base>
