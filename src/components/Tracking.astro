@@ -6,7 +6,7 @@ import { SITE } from '../config/site';
   são registrados mesmo antes de os scripts chegarem. Os scripts só carregam na primeira interação ou após 4s,
   para não pesar no carregamento da página.
 -->
-<script is:inline define:vars={{ ga4: SITE.ga4, ads: SITE.adsId, pixel: SITE.pixelId }}>
+<script is:inline define:vars={{ ga4: SITE.ga4, ads: SITE.adsId, pixels: SITE.pixelIds }}>
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { dataLayer.push(arguments); };
   gtag('js', new Date());
@@ -16,7 +16,7 @@ import { SITE } from '../config/site';
   var n = (window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); });
   if (!window._fbq) window._fbq = n;
   n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
-  fbq('init', pixel);
+  pixels.forEach(function (id) { fbq('init', id); });
   fbq('track', 'PageView');
 
   var carregado = false;

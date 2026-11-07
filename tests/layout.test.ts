@@ -6,9 +6,9 @@ import { allDistFiles, ldOfType, loadPage, readPage } from './helpers';
 const routes = LEGACY_ROUTES;
 
 describe('tracking em todas as páginas', () => {
-  it.each(routes)('%s carrega GA4, Ads e Pixel', (r) => {
+  it.each(routes)('%s carrega GA4, Ads e os dois Pixels', (r) => {
     const html = readPage(r);
-    for (const id of ['G-PMMHJSMB95', 'AW-18148907605', '1031313369581014']) expect(html).toContain(id);
+    for (const id of ['G-PMMHJSMB95', 'AW-18148907605', '1031313369581014', '1436673954717854']) expect(html).toContain(id);
   });
 });
 

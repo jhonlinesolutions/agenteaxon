@@ -7,7 +7,7 @@ export const SITE = {
   email: 'contato@jhonlinesolutions.com.br',
   ga4: 'G-PMMHJSMB95',
   adsId: 'AW-18148907605',
-  pixelId: '1031313369581014',
+  pixelIds: ['1031313369581014', '1436673954717854'],
   priceFrom: 497,
   company: {
     legalName: 'JH Online Solutions LTDA',
