@@ -1,1 +1,18 @@
 /sitemap.xml /sitemap-index.xml 301
+
+# Links relativos do site antigo (ex.: /axon-vs-atendente/blog.html) que o Google ainda rastreia
+/blog.html /blog/ 301
+/:p/blog.html /blog/ 301
+/blog/:p/blog.html /blog/ 301
+/contato.html /contato/ 301
+/:p/contato.html /contato/ 301
+/blog/:p/contato.html /contato/ 301
+/sobre.html /sobre/ 301
+/:p/sobre.html /sobre/ 301
+/blog/:p/sobre.html /sobre/ 301
+/privacidade.html /privacidade/ 301
+/:p/privacidade.html /privacidade/ 301
+/blog/:p/privacidade.html /privacidade/ 301
+/termos.html /termos/ 301
+/:p/termos.html /termos/ 301
+/blog/:p/termos.html /termos/ 301

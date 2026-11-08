@@ -30,3 +30,15 @@ describe('Open Graph', () => {
     expect(existsSync(join(DIST, new URL(src).pathname))).toBe(true);
   });
 });
+
+describe('URLs quebradas do site antigo (Search Console)', () => {
+  const regras = () => read('_redirects');
+  it.each(['blog', 'contato', 'sobre', 'privacidade', 'termos'])('%s.html em qualquer nível vai para /%s/', (p) => {
+    const linhas = regras().split(/\r?\n/).map((l) => l.trim().split(/\s+/).join(' '));
+    for (const de of [`/${p}.html`, `/:p/${p}.html`, `/blog/:p/${p}.html`]) expect(linhas).toContain(`${de} /${p}/ 301`);
+  });
+
+  it('robots.txt tira /cdn-cgi/ do rastreamento', () => {
+    expect(read('robots.txt')).toMatch(/^Disallow: \/cdn-cgi\/$/m);
+  });
+});
