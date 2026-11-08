@@ -1,6 +1,7 @@
 ---
 import Base from './Base.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Autor from '../components/Autor.astro';
 import type { Breadcrumb } from '../components/Seo.astro';
 
 interface Props {
@@ -42,7 +43,7 @@ const dataFmt = updated && new Date(`${updated}T12:00:00-03:00`).toLocaleDateStr
       {eyebrow && <p class="mt-8 text-sm font-semibold tracking-wide text-roxo uppercase">{eyebrow}</p>}
       <h1 class:list={['titulo text-[2.5rem] sm:text-6xl', eyebrow ? 'mt-3' : 'mt-8']}>{title}</h1>
       {lead && <p class="mt-5 max-w-2xl text-lg leading-relaxed text-texto">{lead}</p>}
-      {dataFmt && <p class="mt-4 text-sm text-suave">Atualizado em <time datetime={updated}>{dataFmt}</time> · Equipe Axon</p>}
+      {dataFmt && <p class="mt-4 text-sm text-suave"><Autor /> · Atualizado em <time datetime={updated}>{dataFmt}</time></p>}
       {answer && (
         <div data-answer class="cartao mt-8 border-l-4 border-l-roxo p-6">
           <p class="text-sm font-semibold text-roxo">Resposta direta</p>

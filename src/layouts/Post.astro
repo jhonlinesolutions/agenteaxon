@@ -4,7 +4,9 @@ import type { MarkdownHeading } from 'astro';
 import Base from './Base.astro';
 import CtaWhatsApp from '../components/CtaWhatsApp.astro';
 import FinalCta from '../components/FinalCta.astro';
+import Autor from '../components/Autor.astro';
 import { SITE } from '../config/site';
+import { autorLd } from '../lib/autor';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -27,7 +29,7 @@ const ld = {
   datePublished: pubDate.toISOString().slice(0, 10),
   dateModified: (updatedDate ?? pubDate).toISOString().slice(0, 10),
   inLanguage: 'pt-BR',
-  author: { '@type': 'Organization', name: 'Equipe Axon', url: `${SITE.url}/sobre/` },
+  author: await autorLd(),
   publisher: { '@id': `${SITE.url}/#organization` },
   mainEntityOfPage: new URL(path, SITE.url).href,
   image: new URL(ogImage ?? '/og/axon.png', SITE.url).href,
@@ -44,7 +46,7 @@ const ld = {
         <h1 class="titulo mt-8 text-[2.5rem] sm:text-6xl">{title}</h1>
         <p class="mt-5 text-lg leading-relaxed text-texto">{description}</p>
         <p class="mt-5 text-sm text-suave">
-          Equipe Axon · <time datetime={pubDate.toISOString().slice(0, 10)}>{fmt(pubDate)}</time>
+          <Autor /> · <time datetime={pubDate.toISOString().slice(0, 10)}>{fmt(pubDate)}</time>
           {updatedDate && <> · atualizado em <time datetime={updatedDate.toISOString().slice(0, 10)}>{fmt(updatedDate)}</time></>}
           · {minutes} min de leitura
         </p>

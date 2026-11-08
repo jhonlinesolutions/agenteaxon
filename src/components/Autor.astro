@@ -1,0 +1,10 @@
+---
+import { Image } from 'astro:assets';
+import { AUTOR } from '../lib/autor';
+
+interface Props { class?: string }
+---
+<span data-autor class:list={['inline-flex items-center gap-2 align-middle', Astro.props.class]}>
+  <Image data-autor-foto src={AUTOR.rosto} alt={AUTOR.nome} width={36} height={36} densities={[1, 2]} class="size-9 rounded-full object-cover ring-2 ring-white" />
+  <span class="font-medium text-tinta">{AUTOR.nome}</span>
+</span>

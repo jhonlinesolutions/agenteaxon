@@ -3,6 +3,7 @@ import ArticleShell from '../../layouts/ArticleShell.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 import Icon from '../../components/Icon.astro';
 import { SITE } from '../../config/site';
+import { autorLd } from '../../lib/autor';
 
 const path = '/vale-a-pena-automatizar-atendimento-whatsapp/';
 const updated = '2026-10-29';
@@ -27,7 +28,7 @@ const article = {
   headline: 'Vale a pena automatizar o atendimento no WhatsApp?',
   datePublished: '2025-05-29',
   dateModified: updated,
-  author: { '@type': 'Organization', name: 'Equipe Axon', url: SITE.url },
+  author: await autorLd(),
   publisher: { '@id': `${SITE.url}/#organization` },
   mainEntityOfPage: new URL(path, SITE.url).href,
 };

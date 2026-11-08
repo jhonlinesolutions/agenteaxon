@@ -3,6 +3,7 @@ import ArticleShell from '../../layouts/ArticleShell.astro';
 import Comparison from '../../components/Comparison.astro';
 import CtaWhatsApp from '../../components/CtaWhatsApp.astro';
 import { SITE } from '../../config/site';
+import { autorLd } from '../../lib/autor';
 
 const path = '/axon-vs-atendente/';
 const updated = '2026-10-29';
@@ -23,7 +24,7 @@ const article = {
   headline: 'Axon vs. contratar um atendente: comparação completa',
   datePublished: '2025-05-29',
   dateModified: updated,
-  author: { '@type': 'Organization', name: 'Equipe Axon', url: SITE.url },
+  author: await autorLd(),
   publisher: { '@id': `${SITE.url}/#organization` },
   mainEntityOfPage: new URL(path, SITE.url).href,
 };
