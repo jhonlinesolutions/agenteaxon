@@ -3,6 +3,8 @@ title: "Como Clínicas Médicas Estão Usando IA para Reduzir Faltas"
 description: "Confirmação automatizada, lembretes inteligentes e triagem de urgência via WhatsApp. Veja como clínicas médicas estão usando IA para reduzir faltas e aumentar receita."
 pubDate: 2025-05-29
 updatedDate: 2026-10-29
+ogImage: "/blog-img/clinicas-medicas-ia-reduzir-faltas.jpg"
+coverAlt: "Médica mostrando informações em um tablet para uma paciente no consultório"
 ---
 Falta em consulta é um dos maiores problemas operacionais de clínicas médicas no Brasil. Uma agenda com 20% de ausências significa 20% da capacidade jogada fora — horários vagos que poderiam ter gerado receita, atendido pacientes na fila de espera e melhorado o fluxo da clínica.
 

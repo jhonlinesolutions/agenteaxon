@@ -2,6 +2,8 @@
 title: "Quando o Agente de IA Deve Passar a Conversa para um Humano"
 description: "As situações em que o agente de IA no WhatsApp deve chamar alguém da equipe, as que ele resolve sozinho e como fazer essa passagem sem perder o cliente."
 pubDate: 2026-10-29
+ogImage: "/blog-img/quando-agente-ia-deve-passar-para-humano.jpg"
+coverAlt: "Atendente sorrindo com headset em um escritório"
 ---
 Um agente de IA bem configurado resolve a maior parte do atendimento do dia a dia sozinho: tira dúvidas, passa preços, agenda horários e responde de madrugada. Mas ele não deve resolver **tudo**. Saber a hora de chamar uma pessoa da equipe é tão importante quanto saber responder.
 

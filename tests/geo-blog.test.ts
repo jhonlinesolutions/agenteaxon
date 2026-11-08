@@ -123,3 +123,7 @@ it('capas originais continuam públicas (usadas pelo Facebook/Instagram)', () =>
     expect(existsSync(join(DIST, path))).toBe(true);
   }
 });
+
+it('todos os posts têm capa', () => {
+  expect(COM_CAPA.length).toBe(BLOG_SLUGS.length);
+});

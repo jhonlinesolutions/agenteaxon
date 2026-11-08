@@ -3,6 +3,8 @@ title: "Como Funciona a Memória de um Agente de IA: Sessão, Histórico e RAG"
 description: "Entenda as três camadas de memória que fazem um agente de IA lembrar do seu cliente — e por que isso é o que separa um atendimento que converte de um que frustra."
 pubDate: 2025-05-29
 updatedDate: 2026-10-29
+ogImage: "/blog-img/como-funciona-memoria-agente-ia-sessao-historico-rag.jpg"
+coverAlt: "Ilustração de um cérebro digital com circuitos"
 ---
 **O que vimos na prática:** nos agentes que implantamos, as conversas fluem melhor quando o agente demonstra memória de sessão — ou seja, quando responde sem pedir que o cliente repita o que já disse. Em clientes que retornam após 24h, ser reconhecido pelo nome já muda a percepção do atendimento.
 

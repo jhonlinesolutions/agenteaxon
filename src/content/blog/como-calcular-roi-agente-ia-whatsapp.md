@@ -3,6 +3,8 @@ title: "Como Calcular o ROI de um Agente de IA no seu Negócio"
 description: "Passo a passo para calcular o retorno sobre investimento de um agente de IA para WhatsApp, com simulações por segmento que você adapta aos seus números."
 pubDate: 2025-05-29
 updatedDate: 2026-10-29
+ogImage: "/blog-img/como-calcular-roi-agente-ia-whatsapp.jpg"
+coverAlt: "Calculadora e caneta sobre uma folha de cálculos"
 ---
 Uma das primeiras perguntas de todo empresário antes de contratar qualquer solução é legítima e direta: **"Quanto vou ganhar com isso?"** No caso de um agente de IA para WhatsApp, a resposta é mensurável, e você mesmo pode calculá-la com os números do seu negócio.
 

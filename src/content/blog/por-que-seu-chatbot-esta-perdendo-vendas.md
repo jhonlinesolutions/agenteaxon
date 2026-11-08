@@ -3,6 +3,8 @@ title: "Por que seu chatbot está perdendo vendas — e o que fazer sobre isso"
 description: "A maioria dos chatbots perde vendas sem que o dono do negócio perceba. Entenda os 5 motivos principais e veja como um agente de IA resolve cada um deles."
 pubDate: 2025-05-28
 updatedDate: 2026-10-29
+ogImage: "/blog-img/por-que-seu-chatbot-esta-perdendo-vendas.jpg"
+coverAlt: "Pessoa navegando em uma loja virtual pelo celular"
 ---
 Você investiu em tráfego pago. Seu produto é bom. A operação funciona. Mas tem algo silencioso acontecendo toda noite, todo fim de semana, toda vez que o movimento aumenta: **seu chatbot está afastando clientes — e você nem percebe.**
 

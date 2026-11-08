@@ -3,6 +3,8 @@ title: "5 Mensagens que seu Negócio Perde por Não Ter Atendimento 24h"
 description: "Descubra os 5 momentos específicos em que negócios perdem leads e receita toda semana por não ter atendimento disponível fora do horário comercial."
 pubDate: 2025-05-29
 updatedDate: 2026-10-29
+ogImage: "/blog-img/5-mensagens-perdidas-sem-atendimento-24h.jpg"
+coverAlt: "Mão segurando um celular com conversa aberta à noite"
 ---
 Todo dono de negócio sabe que precisa atender bem. O que poucos percebem é que o custo do mau atendimento não aparece em nenhum relatório — ele simplesmente não acontece. A venda que se perdeu antes de começar não gera ticket, não gera reclamação. Ela some em silêncio.
 

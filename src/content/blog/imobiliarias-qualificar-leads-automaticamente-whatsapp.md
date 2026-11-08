@@ -3,6 +3,8 @@ title: "Imobiliárias: Como Qualificar Leads Automaticamente com IA no WhatsApp"
 description: "Pare de gastar horas com leads frios. Veja como um agente de IA filtra, qualifica e encaminha apenas os leads prontos para fechar para o corretor."
 pubDate: 2025-05-29
 updatedDate: 2026-10-29
+ogImage: "/blog-img/imobiliarias-qualificar-leads-automaticamente-whatsapp.jpg"
+coverAlt: "Corretor entregando as chaves ao lado de uma maquete de casa"
 ---
 O mercado imobiliário tem um problema de qualificação que custa fortunas todos os dias: corretores gastam horas atendendo pessoas que "só estão olhando", enquanto os leads prontos para fechar esperam por atenção.
 

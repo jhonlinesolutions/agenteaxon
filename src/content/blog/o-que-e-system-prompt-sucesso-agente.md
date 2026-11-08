@@ -2,6 +2,8 @@
 title: "O que é System Prompt e Por que Ele Define o Sucesso do seu Agente de IA"
 description: "O System Prompt é o DNA do agente de IA. Entenda o que ele é, quais são os 6 elementos essenciais e os erros que destroem o desempenho do atendimento."
 pubDate: 2025-05-29
+ogImage: "/blog-img/o-que-e-system-prompt-sucesso-agente.jpg"
+coverAlt: "Notebook com código na tela em uma mesa de escritório"
 ---
 Você pode ter o modelo de linguagem mais avançado do mundo como base do seu agente de IA. Sem um System Prompt bem construído, ele vai responder como uma máquina genérica — sem personalidade, sem foco, sem os limites certos.
 
