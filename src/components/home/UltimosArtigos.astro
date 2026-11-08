@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeading from '../SectionHeading.astro';
+import { postsRecentes } from '../../lib/posts';
+import { capaDoPost } from '../../lib/capas';
+
+const posts = (await postsRecentes()).slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+{posts.length > 0 && (
+  <section class="container-x py-24" aria-labelledby="ultimos-artigos" data-ultimos-artigos>
+    <SectionHeading id="ultimos-artigos" eyebrow="Blog" title="Últimos artigos" lead="Guias práticos para atender melhor no WhatsApp, do seu segmento ao seu dia a dia." />
+    <ul class="mt-12 grid gap-5 md:grid-cols-3">
+      {posts.map((p, i) => {
+        const capa = capaDoPost(p);
+        return (
+          <li data-reveal={i * 90}>
+            <a href={`/blog/${p.id}/`} class="cartao group flex h-full flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+              {capa && <Image src={capa.img} alt="" widths={[400, 640]} sizes="(min-width: 768px) 33vw, 100vw" class="aspect-[16/9] w-full object-cover" />}
+              <div class="flex flex-1 flex-col p-6">
+                <p class="text-xs text-suave">{fmt(p.data.pubDate)}</p>
+                <h3 class="mt-2 text-lg leading-snug font-semibold group-hover:text-roxo">{p.data.title}</h3>
+                <p class="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-texto">{p.data.description}</p>
+                <span class="mt-5 text-sm font-semibold text-roxo">Ler →</span>
+              </div>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    <p class="mt-8 text-center"><a href="/blog/" class="font-semibold text-roxo underline underline-offset-4">Ver todos os artigos</a></p>
+  </section>
+)}

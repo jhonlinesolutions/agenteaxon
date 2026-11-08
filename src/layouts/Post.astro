@@ -7,6 +7,9 @@ import FinalCta from '../components/FinalCta.astro';
 import Autor from '../components/Autor.astro';
 import { SITE } from '../config/site';
 import { autorLd } from '../lib/autor';
+import { Image } from 'astro:assets';
+import { capaDoPost, ogDaCapa } from '../lib/capas';
+import { faqDoMarkdown } from '../lib/faq';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -21,6 +24,11 @@ const path = `/blog/${post.id}/`;
 const origem = `blog/${post.id}`;
 const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 const toc = headings.filter((h) => h.depth === 2);
+const capa = capaDoPost(post);
+const og = capa ? await ogDaCapa(capa.img) : ogImage;
+const faq = faqDoMarkdown(post.body ?? '');
+// Sufixo só quando o título cabe no Google (~60 caracteres).
+const seoTitle = title.length <= 48 ? `${title} | Blog Axon` : title;
 
 const ld = {
   '@type': 'BlogPosting',
@@ -32,10 +40,14 @@ const ld = {
   author: await autorLd(),
   publisher: { '@id': `${SITE.url}/#organization` },
   mainEntityOfPage: new URL(path, SITE.url).href,
-  image: new URL(ogImage ?? '/og/axon.png', SITE.url).href,
+  image: new URL(og ?? '/og/axon.png', SITE.url).href,
+};
+const faqLd = faq.length > 0 && {
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 ---
-<Base title={`${title} | Blog Axon`} description={description} path={path} ogImage={ogImage} type="article" jsonLd={[ld]} breadcrumbs={[{ name: 'Blog', path: '/blog/' }, { name: title, path }]}>
+<Base title={seoTitle} description={description} path={path} ogImage={og} ogAlt={capa?.alt} type="article" jsonLd={faqLd ? [ld, faqLd] : [ld]} breadcrumbs={[{ name: 'Blog', path: '/blog/' }, { name: title, path }]}>
   <article>
     <header class="relative overflow-hidden">
       <div class="orbe -top-32 -right-24 size-96 bg-[#d9ccff]" aria-hidden="true"></div>
@@ -52,6 +64,12 @@ const ld = {
         </p>
       </div>
     </header>
+
+    {capa && (
+      <div class="container-x max-w-4xl">
+        <Image data-capa src={capa.img} alt={capa.alt} widths={[640, 960, 1280]} sizes="(min-width: 1024px) 896px, 100vw" loading="eager" fetchpriority="high" class="mb-12 aspect-[16/9] w-full rounded-[1.75rem] object-cover shadow-[0_20px_60px_-30px_rgba(40,20,90,0.45)]" />
+      </div>
+    )}
 
     <div class="container-x grid max-w-6xl gap-12 lg:grid-cols-[1fr_15rem]">
       <div class="prosa max-w-3xl min-w-0" data-leitura={post.id}><slot /></div>

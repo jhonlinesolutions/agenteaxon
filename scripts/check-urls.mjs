@@ -10,6 +10,6 @@ const res = await Promise.all(LEGACY_ROUTES.map(async (p) => [p, await st(p, 'fo
 const bad = res.filter(([, s]) => s !== '200');
 console.log(`rotas legadas: ${res.length - bad.length}/${res.length} com 200`, bad);
 if (bad.length) process.exitCode = 1;
-for (const p of ['/sobre', '/sobre/index.html', '/blog/como-calcular-roi-agente-ia-whatsapp', '/nao-existe/', '/sitemap.xml', '/sitemap-index.xml', '/robots.txt', '/llms.txt']) {
+for (const p of ['/sobre', '/sobre/index.html', '/blog/como-calcular-roi-agente-ia-whatsapp', '/nao-existe/', '/sitemap.xml', '/sitemap-index.xml', '/robots.txt', '/llms.txt', '/rss.xml']) {
   console.log(p, '=>', await st(p));
 }
