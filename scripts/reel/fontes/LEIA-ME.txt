@@ -1,0 +1,2 @@
+Fontes usadas nos Reels (scripts/reels.mjs). Todas sob a SIL Open Font License 1.1 (https://openfontlicense.org),
+baixadas de https://github.com/google/fonts (pasta ofl/).

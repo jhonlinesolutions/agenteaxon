@@ -30,6 +30,10 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      # Os Reels (scripts/reels.mjs) são montados com ffmpeg durante o build.
+      - name: ffmpeg
+        run: command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
       - name: Testes (build + vitest)
         run: npm test
 
