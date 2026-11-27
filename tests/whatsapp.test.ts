@@ -12,6 +12,14 @@ describe('waLink', () => {
     expect(text).not.toContain('home-final');
   });
 
+  it('nas páginas do blog a mensagem diz que veio do blog', () => {
+    for (const origem of ['blog', 'blog/checklist-atendimento', 'blog/checklist-atendimento-final', 'flutuante/blog/checklist', 'header/blog/x', 'rodape/blog']) {
+      const text = new URL(waLink(origem)).searchParams.get('text');
+      expect(text, origem).toBe('Olá! Vim pelo blog do Axon e quero um diagnóstico grátis.');
+    }
+    expect(new URL(waLink('flutuante/quanto-custa')).searchParams.get('text')).toBe('Olá! Vim pelo site do Axon e quero um diagnóstico grátis.');
+  });
+
   it('mensagem personalizada com "?" e "&" não quebra a URL', () => {
     const url = new URL(waLink('preços', 'Quanto custa? Clínica & estética'));
     expect(url.searchParams.get('text')).toBe('Quanto custa? Clínica & estética');
